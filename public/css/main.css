@@ -1,0 +1,203 @@
+/** {
+  border: 1px solid red;
+}*/
+
+.navbar-brand {              /* Page Title */
+font-family: 'Lobster';
+color: black;
+font-size: 3em;  
+}
+
+.nav li a{                    /* Navigation Bar CSS */
+font-family: 'Titillium Web';
+font-size: 2em;
+color: #fff;
+}
+
+nav a:hover{                    /* Nav buttons hover */
+  background-color: #fff;
+  color: #333;
+}
+
+nav {                          /* Navbar Styling */
+  background-color: #ADD8E6;
+}
+
+nav.navbar {
+  margin-bottom: 0px;
+}
+
+.navbar-toggle .icon-bar {      /* Collapsed Navbar Button */
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #cccccc;
+  border-radius: 1px;
+}
+h2 {
+  color: black;
+  text-shadow: white 0.1em 0.1em 0.2em;
+  font-size: 64px;
+  text-transform: uppercase;
+}
+.jumbotron {                              /* front page styling, maybe add an ID to be able to use jumbotron quick styling on other pages. */
+  font-family: 'Titillium Web';
+  padding: 200px 0px;
+  text-align: center;
+  background-color: white;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+/*  -webkit-box-shadow: inset 0 -4px 9px -3px #000;
+  -moz-box-shadow: inset 0 -4px 9px -3px #000;
+  box-shadow: inset 0 -4px 9px -3px #000;*/
+}
+
+.jumbotron h1 {
+  font-family: 'Lobster';
+  font-size: 4em;
+
+}
+
+.jumbotron h4 {
+  font-family: 'Lobster';
+}
+
+.description {
+  font-family: 'Titillium Web';
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 150px;
+}
+
+.descriptionlogo {
+  height: 150px;
+  width: 150px;
+  background: url('../images/bootstrapimg.png');
+}
+
+.container {
+  top-margin: -150px;
+}
+
+.pages {
+  background-color: white;
+}
+
+#quote-box {
+  width: 100%;
+  background-size: cover;
+  padding: 25px 0px;
+}
+
+#main-container h4 a {
+  color: inherit;
+}
+
+h1 img {
+  padding-bottom: 10px;
+  width: 60px;
+  height: 60px;
+}
+
+
+
+button.link {
+     background:none!important;
+     border:none; 
+     padding:0!important;
+     font: inherit;
+     /*border is optional*/
+/*     border-bottom:1px solid #444;*/ 
+     cursor: pointer;
+}
+
+/*#heading {
+	display: block;
+  max-width: 100%;
+  height: 380px;
+  padding: 50px 0;
+  background: url('../images/headerbackground.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-box-shadow: inset 0 -4px 9px -3px #000;
+  -moz-box-shadow: inset 0 -4px 9px -3px #000;
+  box-shadow: inset 0 -4px 9px -3px #000;
+}*/
+
+/*.maintext {
+	color: white;
+	font-family: 'Lobster';
+}
+
+.nav li {
+	font-family: 'Lobster';
+}*/
+
+/*.col-sm-4 {
+  display: inline-block;
+  width: 25%;
+  margin: 2.5%;
+  height: 120px;
+  padding: 50px 0px;
+  background: url('../images/headerbackground.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-box-shadow: inset 0 -4px 9px -3px #000;
+  -moz-box-shadow: inset 0 -4px 9px -3px #000;
+  box-shadow: inset 0 -4px 9px -3px #000;
+}*/
+
+/*.pages {
+  display: block;
+  max-width: 100%;
+  height: 380px;
+  padding: 25px 0; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-box-shadow: inset 0 -4px 9px -3px #000;
+  -moz-box-shadow: inset 0 -4px 9px -3px #000;
+  box-shadow: inset 0 -4px 9px -3px #000;
+}*/
+
+/*.test {
+  font-family: "Lobster";
+}
+
+.container {
+  margin: 0,;
+}*/
+
+/*.heading {
+  font-family: 'Lobster';
+  color: white;
+}
+
+.jumbotron {
+  background: url('../images/headerbackground2.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-box-shadow: inset 0 -4px 9px -3px #000;
+  -moz-box-shadow: inset 0 -4px 9px -3px #000;
+  box-shadow: inset 0 -4px 9px -3px #000;
+}
+
+.pages h2{
+font-family: 'Lobster';
+background: url('../images/pagesbackground.jpg') no-repeat center center fixed;
+color: white;
+height: 150px;
+padding: 75px;
+  -webkit-box-shadow: inset 0 -4px 9px -3px #000;
+  -moz-box-shadow: inset 0 -4px 9px -3px #000;
+  box-shadow: inset 0 -4px 9px -3px #000;
+}*/
