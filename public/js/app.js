@@ -4,7 +4,7 @@
 
 //instantiate angular app and setup config for template routes
 angular
-.module('app', ['ngRoute'])
+.module('app', ['ngRoute','ngAnimate'])
 .config(config);
 
 //config function for routes

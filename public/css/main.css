@@ -35,6 +35,7 @@ nav.navbar {
   border-radius: 1px;
 }
 h2 {
+  font-family: 'Lobster';
   color: black;
   text-shadow: white 0.1em 0.1em 0.2em;
   font-size: 64px;
@@ -74,7 +75,6 @@ h2 {
 .descriptionlogo {
   height: 150px;
   width: 150px;
-  background: url('../images/bootstrapimg.png');
 }
 
 .container {
@@ -112,6 +112,52 @@ button.link {
 /*     border-bottom:1px solid #444;*/ 
      cursor: pointer;
 }
+
+
+.homelogo {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.rating {
+  width: 25px;
+  height: 25px;
+
+}
+
+.ratingnofade {
+  width: 25px;
+  height: 25px;
+  opacity: 0.25;
+}
+
+.ratingfade {
+  width: 25px;
+  height: 25px;
+  opacity: 0.8;
+  -webkit-transition:all linear 2s;
+  transition:all linear 2s;
+}  
+
+.ratingfade.ng-hide {
+  opacity: 0.25;
+}  
+
+/*ngAnimate testing*/
+
+
+
+
+/*.fade-in {
+  opacity: .8;
+  
+
+}*/
+
+
 
 /*#heading {
 	display: block;

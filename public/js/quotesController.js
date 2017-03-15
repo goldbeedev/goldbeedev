@@ -7,6 +7,8 @@
 angular.module('app')
 .controller('quotesController', function($scope, $location){
 
+$scope.$location = $location;
+
 //set up variables to be used in the printQuote and quote splicing functions
 var message = '';
 var quotes2 =[];
@@ -30,7 +32,7 @@ $scope.loadColors = function() {
 
 var getRandomColors = RandomColors();
         //change the background of the quote-colors div to a randomly generated linear gradient.
-        document.getElementById("quote-colors").style.background = 'linear-gradient(to top,' + getRandomColors + ',' + ' transparent 100%)';
+        document.documentElement.style.background = 'linear-gradient(to top,' + getRandomColors + ',' + ' transparent 100%)';
 
 }
 //load a random color when the template loads
@@ -69,10 +71,14 @@ $scope.printQuote = function() {
         //if the spliced quote object has a citation property, add the value to our message variable.
         if (spliceQuote.citation !== undefined) {
                 $scope.citation = spliceQuote.citation;
+            } else {
+                $scope.citation = "No Citation Available";
             }
         //if the spliced quote object has a year property, add the value to our message variable.
         if (spliceQuote.year !== undefined) {
                 $scope.year = spliceQuote.year;
+            } else {
+                $scope.year = "No Year Available";
             }
         
         
@@ -89,6 +95,11 @@ $scope.printQuote = function() {
         console.log("this is the quotes2 array after quote splicing: " + quotes2);
 }       
 
+$scope.clearStyles = function() {
+
+    document.documentElement.removeAttribute("style");
+
+}
 
 
 });	//end controller

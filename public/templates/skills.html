@@ -1,27 +1,44 @@
+ <div class="container-fluid">
+	<img class="homelogo hvr-rotate" src="images\home.png" ng-click="$location.path('/')">
+ </div>
+
+
 <div class="container pages jumbotron">
 	<div class="row">
 		<div class="col-sm-6 description">
-			<img src="images\angular.png">
-				<h1>AngularJS</h1>
-					<p>Using Bootstrap 3 to create a clean easy to read design check out the bootstrap page to learn simple tricks and tips to help your page!</p>
-
+		<!-- toggling AngularShow as truthy or falsey shows and hides anything with ng-show="AngularShow" -->
+			<img src="images\angular.png" ng-click="AngularShow = !AngularShow; angularClick()">
+				<h2>AngularJS</h2>
+				<div ng-show="AngularShow" id="angular">
+						<img ng-show="AngularShow" class="ratingfade" src="images/beelogo.jpg"><img ng-show="AngularShow" class="ratingfade" src="images/beelogo.jpg"><img ng-show="AngularShow" class="ratingfade" src="images/beelogo.jpg"><img class="ratingnofade" src="images/beelogo.jpg"><img class="ratingnofade" src="images/beelogo.jpg">
+					<p>This website uses AngularJS and Node in conjunction to make the page feel like an app.  I'm fairly new to the world of JavaScript on the server, but am grasping concepts quickly.  Having a solid foundation in JavaScript and jQuery makes this possible.</p>
+				</div>
 						</div>
 		<div class="col-sm-6 description">
-			<img src="images\html5.png">
-				<h1>HTML5</h1>
-					<p>jQuery enhances the user experience and is popular across the web click the jQuery link on the navbar to see what jQuery code and plugins this website is using</p>
+			<img src="images\html5.png" ng-click="HtmlShow = !HtmlShow; htmlClick()">
+				<h2>HTML5</h2>
+				<div ng-show="HtmlShow">
+						<img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg">
+					<p>HTML is the backbone of all front end development.  Learning this language sparked my passion to want to learn more about the magical world of web development.  While I have not completely memorized the language, I rarely run into a challenge I cannot conquer in this medium.</p>
+				</div>
 				</div>
 	</div>
 	<div class="row">
 		<div class="col-sm-6 description">
-			<img src="images\css3.png">
-				<h1>CSS3</h1>
-			 		<p>Bootstrap, HTML and CSS combine to create mobile optimized websites.  The Bootstrap link above contains easy to use code to enable your website to adjust to a variety of screen sizes.  Resize this browser window to see it in action!</p>
+			<img src="images\css3.png" ng-click="CSS3Show = !CSS3Show; cssClick()">
+				<h2>CSS3</h2>
+				<div ng-show="CSS3Show">
+						<img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg">
+					<p>Bootstrap, HTML and CSS combine to create mobile optimized websites.  I have been experimenting with Bootstrap and understand overlying concepts and what is available via this framework.  CSS is a cornerstone language that I learned side by side while starting with HTML a few years ago.</p>
+				</div>
 			 </div>
 		<div class="col-sm-6 description">
-			<img src="images\node.png">
-				<h1>JavaScript</h1>
-					<p>I'm still learning jQuery for the most part but I have learned basic JavaScript and would like to update the page with some functions and tutorials on JavaScript as well</p>
+			<img src="images\node.png" ng-click="NodeShow = !NodeShow; jsClick()">
+				<h2>JavaScript</h2>
+				<div ng-show="NodeShow">
+						<img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg">
+					<p>JavaScript and jQuery have been a primary focus of mine for the latter part of the last 1.5 to 2 years.  I would say I have a good understanding of what the language offers.  One would most likely rate me at an intermediate level working in this language.  I do run into roadblocks, but often with dilligence and documentation can overcome most challenges.  I enjoy breaking any wall I hit while coding with JavaScript.</p>
+				</div>
 			</div>
 
 

@@ -9,8 +9,9 @@
   "author": "Justin",
   "license": "MIT",
   "dependencies": {
-    "angular": "^1.6.1",
-    "angular-route": "^1.6.1",
+    "angular": "^1.6.3",
+    "angular-animate": "^1.6.3",
+    "angular-route": "^1.6.3",
     "body-parser": "^1.16.0",
     "express": "^4.14.0",
     "nodemon": "^1.11.0",
