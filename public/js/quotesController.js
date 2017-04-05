@@ -81,13 +81,6 @@ $scope.printQuote = function() {
                 $scope.year = "No Year Available";
             }
         
-        
-        //print the quote to the page.
-        //reset the message variable for the next quote generated.
-        // $scope.message = '';
-        //Get colors for random background color in the quotes area.
-         //change this for my personal page so it doesnt change the whole documents body background
-        //Call quote splicing to cycle through used quotes and push them into the new array of fresh ones.
         console.log("this is the quote object after quote splicing: " + quoteObject);
         console.log("this is the quotes array object after quote splicing: " + quotes);
         console.log("this is the spliceQuote: " + spliceQuote);

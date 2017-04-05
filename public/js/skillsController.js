@@ -35,11 +35,62 @@ pushlogos(logos);
 console.log(angularlogos);
 console.log(angularlogos[0]);
 
-
+//function to call prismjs to highlight all code inside prism code blocks
+$scope.$on('$viewContentLoaded', function(){
+    Prism.highlightAll();
+});
 
 $scope.$location = $location;
 
 console.log("skills controller is going");
+
+$scope.htmlClick = function() {
+
+	var htmlCodeLink = document.getElementById("htmlCodeLink")
+	var htmlCode = document.getElementById("htmlcode");
+	//remove in from the htmlcode id when the logo is clicked to hide any open code if the html section is toggled 
+	//without toggling live codde link
+
+	htmlCode.classList.remove("in");
+	htmlCodeLink.classList.add("collapsed");
+
+}
+
+$scope.angularClick = function() {
+
+	var angularCodeLink = document.getElementById("angularCodeLink")
+	var angularCode = document.getElementById("angularcode");
+	//remove in from the htmlcode id when the logo is clicked to hide any open code if the html section is toggled 
+	//without toggling live codde link
+
+	angularcode.classList.remove("in");
+	angularCodeLink.classList.add("collapsed");
+
+}
+
+$scope.cssClick = function() {
+
+	var cssCodeLink = document.getElementById("cssCodeLink")
+	var cssCode = document.getElementById("css3code");
+	//remove in from the htmlcode id when the logo is clicked to hide any open code if the html section is toggled 
+	//without toggling live codde link
+
+	cssCode.classList.remove("in");
+	cssCodeLink.classList.add("collapsed");
+
+}
+
+$scope.jsClick = function() {
+
+	var jsCodeLink = document.getElementById("nodeCodeLink")
+	var jsCode = document.getElementById("nodecode");
+	//remove in from the htmlcode id when the logo is clicked to hide any open code if the html section is toggled 
+	//without toggling live codde link
+
+	jsCode.classList.remove("in");
+	jsCodeLink.classList.add("collapsed");
+
+}
 
 
 });	//end controller

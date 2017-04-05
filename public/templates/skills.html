@@ -7,41 +7,253 @@
 	<div class="row">
 		<div class="col-sm-6 description">
 		<!-- toggling AngularShow as truthy or falsey shows and hides anything with ng-show="AngularShow" -->
-			<img src="images\angular.png" ng-click="AngularShow = !AngularShow; angularClick()">
+			<img class="grayscale" src="images\angular.png" ng-click="AngularShow = !AngularShow; angularClick()">
 				<h2>AngularJS</h2>
 				<div ng-show="AngularShow" id="angular">
-						<img ng-show="AngularShow" class="ratingfade" src="images/beelogo.jpg"><img ng-show="AngularShow" class="ratingfade" src="images/beelogo.jpg"><img ng-show="AngularShow" class="ratingfade" src="images/beelogo.jpg"><img class="ratingnofade" src="images/beelogo.jpg"><img class="ratingnofade" src="images/beelogo.jpg">
-					<p>This website uses AngularJS and Node in conjunction to make the page feel like an app.  I'm fairly new to the world of JavaScript on the server, but am grasping concepts quickly.  Having a solid foundation in JavaScript and jQuery makes this possible.</p>
+						<img ng-show="AngularShow" class="ratingfade" src="images/beelogo.jpg"><img ng-show="AngularShow" class="ratingfade" src="images/beelogo.jpg"><img ng-show="AngularShow" class="ratingnofade" src="images/beelogo.jpg"><img class="ratingnofade" src="images/beelogo.jpg"><img class="ratingnofade" src="images/beelogo.jpg">
+					<p ng-show="AngularShow" class="paragraphfade">This website uses AngularJS and Node in conjunction to make the page feel like an app.  I'm fairly new to the world of JavaScript on the server, but am grasping concepts quickly.  Having a solid foundation in JavaScript and jQuery makes this possible.</p>
+				<h4 ng-show="AngularShow" class="paragraphfade">
+					<a id="angularCodeLink" data-target="#angularcode" class="accordion-toggle collapsed" data-toggle="collapse"> Live Code</a>
+				</h4>
+					<div id="angularcode" class="collapse">
+						<pre><code class="language-markup">
+						<!-- Quote html template for demo purposes -->
+	&lt;!-- Quotes HTML template with Angular binding -->
+ &lt;div class="container-fluid">
+	&lt;img class="homelogo hvr-rotate" src="images\home.png" ng-click="$location.path('/'); clearStyles();">
+ &lt;/div>
+
+&lt;div class="container" id="quote-colors" ng-init="loadColors(); printQuote();">
+	&lt;div id="quote-box">
+		&lt;p class="quote">{{message}}&lt;/p>
+      		&lt;p class="source">{{source}}&lt;span class="citation">{{citation}}&lt;/span>&lt;span class="year">{{year}}&lt;/span>&lt;/p>
+    &lt;/div>
+  &lt;button id="loadQuote" ng-click="loadColors(); printQuote();">Show another quote&lt;/button>
+&lt;/div>
+        				</code></pre>
+<!-- quotesController.js source for demo purposes -->
+<pre><code class="language-javascript">
+	//Quote Generator script, ported from vanilla JS to Angular
+(function(){
+'use strict'
+
+
+
+//initialize the angular module
+angular.module('app')
+.controller('quotesController', function($scope, $location){
+
+$scope.$location = $location;
+
+//set up variables to be used in the printQuote and quote splicing functions
+var message = '';
+var quotes2 =[];
+var quoteObject;
+var spliceQuote;
+var quotesIndex;
+
+console.log(quotes2);
+console.log(quotes);
+
+//function for getting random colors
+function RandomColors() {
+		var red = Math.floor(Math.random() * 256);
+		var green = Math.floor(Math.random() * 256);
+		var blue = Math.floor(Math.random() * 256);
+		var colors = 'rgb(' + red + ',' + green + ',' + blue + ')';
+		return colors;
+}	
+
+$scope.loadColors = function() {
+
+var getRandomColors = RandomColors();
+        //change the background of the quote-colors div to a randomly generated linear gradient.
+        document.documentElement.style.background = 'linear-gradient(to top,' + getRandomColors + ',' + ' transparent 100%)';
+
+}
+//load a random color when the template loads
+
+
+//load a random quote when the template loads
+
+
+
+//function for quote splicing used in the printQuote function
+function QuoteSplicing() {
+    //splice quotes from the original array and push them into a new array.
+        quoteObject = quotes[Math.floor(Math.random() * quotes.length)];
+        //store the indexOf the random quoteObject variable.
+        quotesIndex = quotes.indexOf(quoteObject);
+        //splice the random quote object out of the 
+        spliceQuote = quotes.splice(quotesIndex, 1)[0];
+        quotes2.push(spliceQuote);
+        console.log(quotes);
+        console.log(quotes2);
+
+        if(quotes.length == 0) {
+            quotes = quotes2;
+            quotes2 = [];
+        }
+
+        return spliceQuote;
+}
+
+
+//function to print quotes when the template loads and the new quote button is pressed
+$scope.printQuote = function() {
+	QuoteSplicing();
+        $scope.message = spliceQuote.quote;
+        $scope.source = spliceQuote.source;
+        //if the spliced quote object has a citation property, add the value to our message variable.
+        if (spliceQuote.citation !== undefined) {
+                $scope.citation = spliceQuote.citation;
+            } else {
+                $scope.citation = "No Citation Available";
+            }
+        //if the spliced quote object has a year property, add the value to our message variable.
+        if (spliceQuote.year !== undefined) {
+                $scope.year = spliceQuote.year;
+            } else {
+                $scope.year = "No Year Available";
+            }
+        
+        console.log("this is the quote object after quote splicing: " + quoteObject);
+        console.log("this is the quotes array object after quote splicing: " + quotes);
+        console.log("this is the spliceQuote: " + spliceQuote);
+        console.log("this is the quote property on spliceQuote: " + spliceQuote.quote);
+        console.log("this is the quotes2 array after quote splicing: " + quotes2);
+}       
+
+$scope.clearStyles = function() {
+
+    document.documentElement.removeAttribute("style");
+
+}
+
+
+});	//end controller
+})(); //end self invoked function
+        				</code></pre>
+
+
+					</div>
 				</div>
-						</div>
+		</div>
 		<div class="col-sm-6 description">
-			<img src="images\html5.png" ng-click="HtmlShow = !HtmlShow; htmlClick()">
+			<img class="grayscale" src="images\html5.png" ng-click="HtmlShow = !HtmlShow; htmlClick()">
 				<h2>HTML5</h2>
 				<div ng-show="HtmlShow">
-						<img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg">
-					<p>HTML is the backbone of all front end development.  Learning this language sparked my passion to want to learn more about the magical world of web development.  While I have not completely memorized the language, I rarely run into a challenge I cannot conquer in this medium.</p>
-				</div>
-				</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-6 description">
-			<img src="images\css3.png" ng-click="CSS3Show = !CSS3Show; cssClick()">
-				<h2>CSS3</h2>
-				<div ng-show="CSS3Show">
-						<img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg">
-					<p>Bootstrap, HTML and CSS combine to create mobile optimized websites.  I have been experimenting with Bootstrap and understand overlying concepts and what is available via this framework.  CSS is a cornerstone language that I learned side by side while starting with HTML a few years ago.</p>
-				</div>
-			 </div>
-		<div class="col-sm-6 description">
-			<img src="images\node.png" ng-click="NodeShow = !NodeShow; jsClick()">
-				<h2>JavaScript</h2>
-				<div ng-show="NodeShow">
-						<img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg"><img class="ratingfade" src="images/beelogo.jpg">
-					<p>JavaScript and jQuery have been a primary focus of mine for the latter part of the last 1.5 to 2 years.  I would say I have a good understanding of what the language offers.  One would most likely rate me at an intermediate level working in this language.  I do run into roadblocks, but often with dilligence and documentation can overcome most challenges.  I enjoy breaking any wall I hit while coding with JavaScript.</p>
+						<img ng-show="HtmlShow" class="ratingfade" src="images/beelogo.jpg"><img ng-show="HtmlShow" class="ratingfade" src="images/beelogo.jpg"><img ng-show="HtmlShow" class="ratingfade" src="images/beelogo.jpg"><img ng-show="HtmlShow" class="ratingfade" src="images/beelogo.jpg"><img ng-show="HtmlShow" class="ratingfade" src="images/beelogo.jpg">
+					<p ng-show="HtmlShow" class="paragraphfade">HTML is the backbone of all front end development.  Learning this language sparked my passion to want to learn more about the magical world of web development.  While I have not completely memorized the language, I rarely run into a challenge I cannot conquer in this medium.</p>
+				<h4 ng-show="HtmlShow" class="paragraphfade">
+					<a id="htmlCodeLink" data-target="#htmlcode" class="accordion-toggle collapsed" data-toggle="collapse">Live Code</a>
+				</h4>
+					<div id="htmlcode" class="collapse">
+						<pre><code class="language-markup">
+						<!-- Contact html template for demo purposes -->
+&lt;!-- The contact page shows how simple HTML can create an effective template, paired with a hvr stylesheet
+anything is possible -->
+ &lt;div class="container-fluid">
+	&lt;img class="homelogo hvr-rotate" src="images\home.png" ng-click="$location.path('/')">
+ &lt;/div>
+
+&lt;div class="container pages jumbotron">
+	&lt;div class="row">
+		&lt;div class="col-sm-4 description">
+			&lt;a href="https://github.com/goldbeedev">&lt;img class="contactlogo hvr-grow" src="images\Github.png">&lt;/a>
+				&lt;/div>
+		&lt;div class="col-sm-4 description">
+			&lt;a href="http://www.linkedin.com/in/justin-goldby-b0885b39">&lt;img class="contactlogo hvr-grow" src="images\Linkedin.png">&lt;/a>
+				&lt;/div>
+		&lt;div class="col-sm-4 description">
+			&lt;a href="mailto:goldbee500@gmail.com?subject=Hi Justin!">&lt;img class="contactlogo hvr-grow" src="images\Google+.png">&lt;/a>
+		&lt;/div>
+	&lt;/div>
+&lt;/div>
+        				</code></pre>
+					</div>
 				</div>
 			</div>
+		</div>
+	<div class="row">
+		<div class="col-sm-6 description">
+			<img class="grayscale" src="images\css3.png" ng-click="CSS3Show = !CSS3Show; cssClick()">
+				<h2>CSS3</h2>
+					<div ng-show="CSS3Show">
+						<img ng-show="CSS3Show" class="ratingfade" src="images/beelogo.jpg"><img ng-show="CSS3Show" class="ratingfade" src="images/beelogo.jpg"><img ng-show="CSS3Show" class="ratingfade" src="images/beelogo.jpg"><img ng-show="CSS3Show" class="ratingfade" src="images/beelogo.jpg"><img ng-show="CSS3Show" class="ratingfade" src="images/beelogo.jpg">
+					<p ng-show="CSS3Show" class="paragraphfade">Bootstrap, HTML and CSS combine to create mobile optimized websites.  I have been experimenting with Bootstrap and understand overlying concepts and what is available via this framework.  CSS is a cornerstone language that I learned side by side while starting with HTML a few years ago.</p>
+				<h4 ng-show="CSS3Show" class="paragraphfade">
+					<a id="cssCodeLink" data-target="#css3code" class="accordion-toggle collapsed" data-toggle="collapse">Live Code</a>
+				</h4>
+						<div id="css3code" class="collapse">
+							<pre><code class="language-CSS">
+							/* CSS to make a simple button-link element used for the links on the home page */
+					button.link {
+     						background:none!important;
+     						border:none; 
+     						padding:0!important;
+     						font: inherit;
+     						/*border is optional*/
+							/*     border-bottom:1px solid #444;*/ 
+     						cursor: pointer;
+						}
+
+							/* How to make your buttons turn grayscale upon hover as seen on the skills page*/
+					.grayscale:hover {
+  								filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  								filter: gray;
+  								-webkit-filter: grayscale(100%);
+  								cursor: pointer;
+							}
 
 
+        				</code></pre>
+						</div>
+					</div>
+		</div>
+		<div class="col-sm-6 description">
+			<img class="grayscale" src="images\node.png" ng-click="NodeShow = !NodeShow; jsClick()">
+				<h2>JavaScript</h2>
+				<div ng-show="NodeShow">
+						<img ng-show="NodeShow" class="ratingfade" src="images/beelogo.jpg"><img ng-show="NodeShow" class="ratingfade" src="images/beelogo.jpg"><img ng-show="NodeShow" class="ratingfade" src="images/beelogo.jpg"><img class="ratingnofade" src="images/beelogo.jpg"><img class="ratingnofade" src="images/beelogo.jpg">
+					<p ng-show="NodeShow" class="paragraphfade">JavaScript and jQuery have been a primary focus of mine for the latter part of the last 1.5 to 2 years.  I would say I have a good understanding of what the language offers.  One would most likely rate me at an intermediate level working in this language.  I do run into roadblocks, but often with dilligence and documentation can overcome most challenges.  I enjoy breaking any wall I hit while coding with JavaScript.</p>
+				<h4 ng-show="NodeShow" class="paragraphfade">
+					<a id="nodeCodeLink" data-target="#nodecode" class="accordion-toggle collapsed" data-toggle="collapse"> Live Code</a>
+				</h4>
+					<div id="nodecode" class="collapse">
+						<pre><code class="language-javascript">
+					//using the express node module we can easily create an app environment that will run on the server.
+					//we use get requests and send the file to use these scripts as dependencies in our program
+'use strict';
+//load modules
+var express = require('express'),
+  bodyParser = require('body-parser'),
+  path = require('path');
+
+
+var app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+var port = process.env.PORT || 5000;
+
+app.use('/', express.static('public'));
+
+// vendor scripts
+app.get('/vendor/angular.js', function(req, res) {
+  res.sendFile(path.join(__dirname, '../node_modules', 'angular', 'angular.js'));
+});
+app.get('/vendor/angular-route.js', function(req, res) {
+  res.sendFile(path.join(__dirname, '../node_modules', 'angular-route', 'angular-route.js'));
+});
+app.get('/vendor/angular-animate.js', function(req,res){
+  res.sendFile(path.join(__dirname, '../node_modules', 'angular-animate', 'angular-animate.js'));
+});
+
+app.listen(port);
+console.log('Magic happens on port ' + port);
+        				</code></pre>
+					</div>
+				</div>
+		</div>
 	</div>
-
 </div>

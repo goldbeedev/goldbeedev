@@ -50,9 +50,6 @@ h2 {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-/*  -webkit-box-shadow: inset 0 -4px 9px -3px #000;
-  -moz-box-shadow: inset 0 -4px 9px -3px #000;
-  box-shadow: inset 0 -4px 9px -3px #000;*/
 }
 
 .jumbotron h1 {
@@ -138,18 +135,93 @@ button.link {
   width: 25px;
   height: 25px;
   opacity: 0.8;
-  -webkit-transition:all linear 2s;
-  transition:all linear 2s;
+  -webkit-transition: all linear 1s;
+  transition: all linear 1s;
 }  
 
 .ratingfade.ng-hide {
-  opacity: 0.25;
+  opacity: 0.15;
 }  
+
+
+.paragraphfade.ng-hide {
+  opacity: 0;
+}
+
+.paragraphfade {
+  opacity: 1;
+  -webkit-transition: all linear 2s;
+  transition: all linear 2s;
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+}
+
+.grayscale {
+  filter: none;
+  -webkit-filter: none;
+}
+
+.grayscale:hover {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  filter: gray;
+  -webkit-filter: grayscale(100%);
+  cursor: pointer;
+}
 
 /*ngAnimate testing*/
 
+.accordion-toggle {
+  position: relative;
+}
 
+a.accordion-toggle {
+  text-decoration: none;
+  color: inherit;
+}
 
+a.accordion-toggle:hover {
+  cursor: pointer;
+}
+
+.accordion-toggle::before {
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  opacity: 0;
+}
+.accordion-toggle.collapsed::before {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  opacity: 1;
+}
+.accordion-toggle.collapsed::after {
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.accordion-toggle::before,
+.accordion-toggle::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: -22px;
+  width: 14px;
+  height: 4px;
+  margin-top: -2px;
+  background-color: #000;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.language-javascript {
+  max-height: 300px
+}
 
 /*.fade-in {
   opacity: .8;
