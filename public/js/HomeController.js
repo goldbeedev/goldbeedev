@@ -26,6 +26,10 @@ $scope.quotes = function() {
 
 }
 
+$scope.portfolio = function() {
+
+	$location.path('/portfolio');
+}
 
 
 

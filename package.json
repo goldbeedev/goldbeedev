@@ -4,7 +4,8 @@
   "description": "My personal portfolio",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon ./src/index.js localhost 5000"
+    "start": "nodemon ./src/index.js localhost 5000",
+    "gulp": "gulp"
   },
   "author": "Justin",
   "license": "MIT",
@@ -15,6 +16,20 @@
     "body-parser": "^1.16.0",
     "express": "^4.14.0",
     "nodemon": "^1.11.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^5.0.0",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "run-sequence": "^1.2.2"
+  },
+  "devDependencies": {
+    "gulp-ng-annotate": "^2.1.0"
   }
 }

@@ -31,6 +31,10 @@ function config($routeProvider, $locationProvider) {
 		templateUrl: 'templates/contact.html',
 		controller: 'contactController'
 	})
+	.when('/portfolio', {
+		templateUrl: 'templates/portfolio.html',
+		controller: 'portfolioController' //change this eventually, just using contactController as a default
+	})
 	//when all else fails direct to the home page
 	.otherwise({
 		redirectTo: '/'

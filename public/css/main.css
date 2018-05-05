@@ -54,8 +54,9 @@ h2 {
 
 .jumbotron h1 {
   font-family: 'Lobster';
-  font-size: 4em;
-
+  font-size: 5em;
+  margin-bottom: 0;
+  color: white;
 }
 
 .jumbotron h4 {
@@ -88,6 +89,21 @@ h2 {
   padding: 25px 0px;
 }
 
+.title-area{
+  position: relative;
+  top: 200px;
+}
+
+#main-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../../images/skyscraper.jpg') no-repeat;
+  background-size: cover;
+}
+
 #main-container h4 a {
   color: inherit;
 }
@@ -102,12 +118,13 @@ h1 img {
 
 button.link {
      background:none!important;
-     border:none; 
-     padding:0!important;
+     border: 2px solid white; 
+     padding: 5px;
      font: inherit;
      /*border is optional*/
 /*     border-bottom:1px solid #444;*/ 
      cursor: pointer;
+     color: white;
 }
 
 
@@ -223,99 +240,3 @@ a.accordion-toggle:hover {
   max-height: 300px
 }
 
-/*.fade-in {
-  opacity: .8;
-  
-
-}*/
-
-
-
-/*#heading {
-	display: block;
-  max-width: 100%;
-  height: 380px;
-  padding: 50px 0;
-  background: url('../images/headerbackground.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  -webkit-box-shadow: inset 0 -4px 9px -3px #000;
-  -moz-box-shadow: inset 0 -4px 9px -3px #000;
-  box-shadow: inset 0 -4px 9px -3px #000;
-}*/
-
-/*.maintext {
-	color: white;
-	font-family: 'Lobster';
-}
-
-.nav li {
-	font-family: 'Lobster';
-}*/
-
-/*.col-sm-4 {
-  display: inline-block;
-  width: 25%;
-  margin: 2.5%;
-  height: 120px;
-  padding: 50px 0px;
-  background: url('../images/headerbackground.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  -webkit-box-shadow: inset 0 -4px 9px -3px #000;
-  -moz-box-shadow: inset 0 -4px 9px -3px #000;
-  box-shadow: inset 0 -4px 9px -3px #000;
-}*/
-
-/*.pages {
-  display: block;
-  max-width: 100%;
-  height: 380px;
-  padding: 25px 0; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  -webkit-box-shadow: inset 0 -4px 9px -3px #000;
-  -moz-box-shadow: inset 0 -4px 9px -3px #000;
-  box-shadow: inset 0 -4px 9px -3px #000;
-}*/
-
-/*.test {
-  font-family: "Lobster";
-}
-
-.container {
-  margin: 0,;
-}*/
-
-/*.heading {
-  font-family: 'Lobster';
-  color: white;
-}
-
-.jumbotron {
-  background: url('../images/headerbackground2.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  -webkit-box-shadow: inset 0 -4px 9px -3px #000;
-  -moz-box-shadow: inset 0 -4px 9px -3px #000;
-  box-shadow: inset 0 -4px 9px -3px #000;
-}
-
-.pages h2{
-font-family: 'Lobster';
-background: url('../images/pagesbackground.jpg') no-repeat center center fixed;
-color: white;
-height: 150px;
-padding: 75px;
-  -webkit-box-shadow: inset 0 -4px 9px -3px #000;
-  -moz-box-shadow: inset 0 -4px 9px -3px #000;
-  box-shadow: inset 0 -4px 9px -3px #000;
-}*/

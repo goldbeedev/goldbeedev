@@ -32,7 +32,7 @@ $scope.loadColors = function() {
 
 var getRandomColors = RandomColors();
         //change the background of the quote-colors div to a randomly generated linear gradient.
-        document.documentElement.style.background = 'linear-gradient(to top,' + getRandomColors + ',' + ' transparent 100%)';
+        document.getElementById('quote-colors').style.background = 'linear-gradient(to top,' + getRandomColors + ',' + ' transparent 100%)';
 
 }
 //load a random color when the template loads
