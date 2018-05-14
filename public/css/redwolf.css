@@ -1,0 +1,137 @@
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-link-logo {
+    left: 20px;
+}
+
+.nav-link-logo img {
+    z-index: -99;
+    max-width: 1200px;
+}
+
+.nav-link {
+    color: white;
+    display: inline-block;
+    float: right;
+    padding: 0 10px;
+    bottom-margin: 20px;
+    font-family: 'Mate SC', cursive;
+    z-index: 1;
+}
+
+.nav-link:hover {
+    cursor: pointer;
+    color: gray;
+    opacity: .6;
+}
+
+/* =======================
+    General body content
+    ==================== */
+
+.company-name {
+    position: absolute;
+    top: 200px;
+    left: 200px;
+}
+
+.company-name-text {
+    font-size: 38px;
+    font-family: 'Condiment', cursive;
+    color: gray;
+}
+
+/* =========================
+    video background stuff
+    ======================== 
+    */
+
+.video-background {
+    background: #000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -99;
+}
+
+.video-foreground,
+.video-background iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+
+/* =================================
+    media queries
+    =============================== */
+
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground { height: 300%; top: -100%; }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground { width: 300%; left: -100%; }
+}
+
+@media only screen
+and (min-width : 0px)
+and (max-width : 480px) {
+    .video-foreground { 
+        display: none; 
+}
+
+    .nav-link {
+        display: block;
+        width: 100%;
+    }
+
+    .company-name {
+        display: block;
+        width: 100%;
+        position: relative;
+        left: 20px;
+        margin-bottom: 20px;
+    }
+
+    .nav-link-logo img {
+        max-width: 500px;
+        display: block;
+    }
+
+    .contact-form {
+        left: 20px;
+    }
+
+    .about-p {
+        display: block;
+        width: 100%;
+
+    }
+
+    .about-text {
+        position: absolute;
+        top: 100px;
+        width: 200px;
+    }
+
+    .social-logo {
+        box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.6);
+    }
+
+
+}

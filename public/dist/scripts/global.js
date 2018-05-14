@@ -17,8 +17,8 @@ function config($routeProvider, $locationProvider) {
 		controller: 'mainController'
 	})
 	//skills page route
-	.when('/skills', {
-		templateUrl: 'templates/skills.html',
+	.when('/about', {
+		templateUrl: 'templates/about.html',
 		controller: 'skillsController'
 	})
 	//quotes page route
@@ -35,6 +35,20 @@ function config($routeProvider, $locationProvider) {
 		templateUrl: 'templates/portfolio.html',
 		controller: 'portfolioController' //change this eventually, just using contactController as a default
 	})
+	.when('/recipes', {
+		templateUrl: 'templates/recipes.html',
+		controller: 'recipesController'
+	})
+	.when('/edit/:id', {
+        controller: 'RecipeDetailController',
+        controllerAs: 'vm',
+        templateUrl: 'templates/recipe-detail.html'
+    })
+    .when('/add', {
+        controller: 'RecipeDetailController',
+        controllerAs: 'vm',
+        templateUrl: 'templates/recipe-detail.html'
+    })
 	//when all else fails direct to the home page
 	.otherwise({
 		redirectTo: '/'
@@ -62,6 +76,61 @@ $scope.$location = $location;
 });	//end controller
 })(); //end self invoked function
 (function(){
+'use strict';
+
+angular.module('app')
+.service('dataService', function($http){
+	//get all recipes
+	this.getRecipes = function(callback) {
+		$http.get('http://localhost:5000/api/recipes')
+		.then(callback)
+	}
+	//get recipes from a category
+	this.getRecipesCategory = function(category, callback) {
+		$http.get('http://localhost:5000/api/recipes?category=' + category)
+		.then(callback)
+
+	}
+	//get a recipe by ID
+	this.getRecipesId = function(id, callback) {
+		$http.get('http://localhost:5000/api/recipes/' + id)
+		.then(callback)
+
+	}
+	//updates a recipe by ID
+	this.putID = function(id, data, callback, error) {
+		$http.put('http://localhost:5000/api/recipes/' + id, data)
+		.then(callback, error)
+
+	}
+	//adds a recipe
+	this.addRecipe = function(recipe, callback, error) {
+		$http.post('http://localhost:5000/api/recipes', recipe)
+		.then(callback, error);
+	}
+	//deletes a recipe by ID
+	this.deleteRecipe = function(id, callback) {
+		$http.delete('http://localhost:5000/api/recipes/' + id)
+		.then(callback);
+
+	}
+	//gets alll the recipe categories
+	this.getCategories = function(callback) {
+		$http.get('http://localhost:5000/api/categories')
+		.then(callback);
+	}
+	//gets all of the food items
+	this.getFoodItems = function(callback) {
+		$http.get('http://localhost:5000/api/fooditems')
+		.then(callback);
+
+	}
+
+
+
+}); //end service
+})(); //end self invoked function
+(function(){
 'use strict'
 
 //initialize the angular module
@@ -72,9 +141,9 @@ angular.module('app')
 $scope.$location = $location;
 
 //add a function to skills that changes the path to the skills template once triggered
-$scope.skills = function() {
+$scope.about = function() {
 
-	$location.path('/skills');
+	$location.path('/about');
 } 
 //add a function to contact that changes the path to the contact template once triggered
 $scope.contact = function() {
@@ -111,11 +180,8 @@ $scope.$location = $location;
 //set the portfolio path to the initial portfolio home page
 $scope.portfolioTemplates = [{ name: 'home', url: 'templates/portfolio/portHome.html'},
      					{ name: 'quotes', url: 'templates/portfolio/quotes.html'},
-                        { name: 'ticstart', url: 'templates/portfolio/ticstart.html'},
-     					// { name: 'tictac', url: 'templates/portfolio/tictac.html'},
-     					{ name: 'moviesearch', url: 'templates/portfolio/moviesearch.html'},
      					{ name: 'pagination', url: 'templates/portfolio/pagination.html'},
-     					{ name: 'twitterapp', url: 'templates/portfolio/twitterapp.html'},
+     					{ name: 'redwolf', url: 'templates/portfolio/redwolf.html'},
      					{ name: 'singlepageapp', url: 'templates/portfolio/singlepageapp.html'}];
 
 
@@ -123,9 +189,15 @@ $scope.portfolioPath = $scope.portfolioTemplates[0].url;
 
 $scope.portClick = function(path) {
 	$scope.portfolioPath = path;
+    
 }
 
-
+$scope.finishLoading = function(path) {
+    if ($scope.portfolioPath === $scope.portfolioTemplates[2].url) {
+        console.log('the path is pagination');
+        pagination();
+    }
+}
 
 //quotes 
 
@@ -208,20 +280,37 @@ $scope.printQuote = function() {
         console.log("this is the quotes2 array after quote splicing: " + quotes2);
 }       
 
+//function to clear the background styles so our main page stays clean after running the quotes project.
 $scope.clearStyles = function() {
 
     document.documentElement.removeAttribute("style");
 
 }
 
-$scope.testclick = function () {
-    var innerchange = document.getElementById('testing');
-    console.log(document.getElementById('testing'));
-    innerchange.innerHTML = '<header><h1>Tic Tac Toe</h1><ul><li class="players" id="player1"><svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-200.000000, -60.000000)" fill="#000000"><g transform="translate(200.000000, 60.000000)"><path d="M21 36.6L21 36.6C29.6 36.6 36.6 29.6 36.6 21 36.6 12.4 29.6 5.4 21 5.4 12.4 5.4 5.4 12.4 5.4 21 5.4 29.6 12.4 36.6 21 36.6L21 36.6ZM21 42L21 42C9.4 42 0 32.6 0 21 0 9.4 9.4 0 21 0 32.6 0 42 9.4 42 21 42 32.6 32.6 42 21 42L21 42Z"/></g></g></g></svg></li><li class="players" id="player2"><svg xmlns="http://www.w3.org/2000/svg" width="42" height="43" viewBox="0 0 42 43" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-718.000000, -60.000000)" fill="#000000"><g transform="translate(739.500000, 81.500000) rotate(-45.000000) translate(-739.500000, -81.500000) translate(712.000000, 54.000000)"><path d="M30 30.1L30 52.5C30 53.6 29.1 54.5 28 54.5L25.5 54.5C24.4 54.5 23.5 53.6 23.5 52.5L23.5 30.1 2 30.1C0.9 30.1 0 29.2 0 28.1L0 25.6C0 24.5 0.9 23.6 2 23.6L23.5 23.6 23.5 2.1C23.5 1 24.4 0.1 25.5 0.1L28 0.1C29.1 0.1 30 1 30 2.1L30 23.6 52.4 23.6C53.5 23.6 54.4 24.5 54.4 25.6L54.4 28.1C54.4 29.2 53.5 30.1 52.4 30.1L30 30.1Z"/></g></g></g></svg></li></ul></header><ul class="boxes"><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li></ul>';
+
+
+//*******************************
+//******** Tic Tac Toe Game *****
+//*******************************
+
+$scope.tictacStart = function () {
+    mainHtml = document.getElementById('main-html');
+    mainHtml.innerHTML = '<div class="screen screen-start" id="start"><header><h1>Tic Tac Toe</h1><button class="button" id="Start">Start game</button></header></div>';
+    // mainHtml.innerHTML = '<header><h1>Tic Tac Toe</h1><ul><li class="players" id="player1"><svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-200.000000, -60.000000)" fill="#000000"><g transform="translate(200.000000, 60.000000)"><path d="M21 36.6L21 36.6C29.6 36.6 36.6 29.6 36.6 21 36.6 12.4 29.6 5.4 21 5.4 12.4 5.4 5.4 12.4 5.4 21 5.4 29.6 12.4 36.6 21 36.6L21 36.6ZM21 42L21 42C9.4 42 0 32.6 0 21 0 9.4 9.4 0 21 0 32.6 0 42 9.4 42 21 42 32.6 32.6 42 21 42L21 42Z"/></g></g></g></svg></li><li class="players" id="player2"><svg xmlns="http://www.w3.org/2000/svg" width="42" height="43" viewBox="0 0 42 43" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-718.000000, -60.000000)" fill="#000000"><g transform="translate(739.500000, 81.500000) rotate(-45.000000) translate(-739.500000, -81.500000) translate(712.000000, 54.000000)"><path d="M30 30.1L30 52.5C30 53.6 29.1 54.5 28 54.5L25.5 54.5C24.4 54.5 23.5 53.6 23.5 52.5L23.5 30.1 2 30.1C0.9 30.1 0 29.2 0 28.1L0 25.6C0 24.5 0.9 23.6 2 23.6L23.5 23.6 23.5 2.1C23.5 1 24.4 0.1 25.5 0.1L28 0.1C29.1 0.1 30 1 30 2.1L30 23.6 52.4 23.6C53.5 23.6 54.4 24.5 54.4 25.6L54.4 28.1C54.4 29.2 53.5 30.1 52.4 30.1L30 30.1Z"/></g></g></g></svg></li></ul></header><ul class="boxes"><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li></ul>';
+    // NewGame();
+    gameStart();
 }
 
+//function to listen for the game start and call the new game.
+function gameStart(){
+var StartGame = document.getElementById('Start');
+StartGame.addEventListener('click', function(){
+    NewGame();
+});
+}
 
-var Mainboard = '<div></div>';
+var mainHtml;
+// var Mainboard = '<div></div>';
 var Boxes;
 var Player1Wins;
 var Player2Wins;
@@ -229,26 +318,15 @@ var BoxesCount;
 // var StartGame;
 var GetNewGame;
 
-// When the page loads, the startup screen should appear. Use the tictactoe-01-start.png mockup, 
-$scope.boardLoad = function() {
-    //Get the main board area's Id for modifying the DOM
-    Mainboard = document.getElementById("board");
-    //Change the start page to the front page once the page loads.
-    // Mainboard.innerHTML = '<div class="screen screen-start" id="start"><header><h1>Tic Tac Toe</h1><a href="#" class="button" id="Start">Start game</a></header></div>';
-    //Get the button ID to start the game
-    var StartGame = document.getElementById("Start");
-    //Event listener for the start game button
-    StartGame.on('click', function(){
-        NewGame();
-    });
-};
+
 
     //New Game Function to create the board, count the boxes and keep track of which player's turn it is.
     var NewGame = function() {
+            console.log("new game function running");
             //Set boxes count to = 0
             BoxesCount = 0;
             //set the board up after clicking the Start button.
-            Mainboard.innerHTML = '<header><h1>Tic Tac Toe</h1><ul><li class="players" id="player1"><svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-200.000000, -60.000000)" fill="#000000"><g transform="translate(200.000000, 60.000000)"><path d="M21 36.6L21 36.6C29.6 36.6 36.6 29.6 36.6 21 36.6 12.4 29.6 5.4 21 5.4 12.4 5.4 5.4 12.4 5.4 21 5.4 29.6 12.4 36.6 21 36.6L21 36.6ZM21 42L21 42C9.4 42 0 32.6 0 21 0 9.4 9.4 0 21 0 32.6 0 42 9.4 42 21 42 32.6 32.6 42 21 42L21 42Z"/></g></g></g></svg></li><li class="players" id="player2"><svg xmlns="http://www.w3.org/2000/svg" width="42" height="43" viewBox="0 0 42 43" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-718.000000, -60.000000)" fill="#000000"><g transform="translate(739.500000, 81.500000) rotate(-45.000000) translate(-739.500000, -81.500000) translate(712.000000, 54.000000)"><path d="M30 30.1L30 52.5C30 53.6 29.1 54.5 28 54.5L25.5 54.5C24.4 54.5 23.5 53.6 23.5 52.5L23.5 30.1 2 30.1C0.9 30.1 0 29.2 0 28.1L0 25.6C0 24.5 0.9 23.6 2 23.6L23.5 23.6 23.5 2.1C23.5 1 24.4 0.1 25.5 0.1L28 0.1C29.1 0.1 30 1 30 2.1L30 23.6 52.4 23.6C53.5 23.6 54.4 24.5 54.4 25.6L54.4 28.1C54.4 29.2 53.5 30.1 52.4 30.1L30 30.1Z"/></g></g></g></svg></li></ul></header><ul class="boxes"><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li></ul>';
+            mainHtml.innerHTML = '<header><h1>Tic Tac Toe</h1><ul><li class="players" id="player1"><svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-200.000000, -60.000000)" fill="#000000"><g transform="translate(200.000000, 60.000000)"><path d="M21 36.6L21 36.6C29.6 36.6 36.6 29.6 36.6 21 36.6 12.4 29.6 5.4 21 5.4 12.4 5.4 5.4 12.4 5.4 21 5.4 29.6 12.4 36.6 21 36.6L21 36.6ZM21 42L21 42C9.4 42 0 32.6 0 21 0 9.4 9.4 0 21 0 32.6 0 42 9.4 42 21 42 32.6 32.6 42 21 42L21 42Z"/></g></g></g></svg></li><li class="players" id="player2"><svg xmlns="http://www.w3.org/2000/svg" width="42" height="43" viewBox="0 0 42 43" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-718.000000, -60.000000)" fill="#000000"><g transform="translate(739.500000, 81.500000) rotate(-45.000000) translate(-739.500000, -81.500000) translate(712.000000, 54.000000)"><path d="M30 30.1L30 52.5C30 53.6 29.1 54.5 28 54.5L25.5 54.5C24.4 54.5 23.5 53.6 23.5 52.5L23.5 30.1 2 30.1C0.9 30.1 0 29.2 0 28.1L0 25.6C0 24.5 0.9 23.6 2 23.6L23.5 23.6 23.5 2.1C23.5 1 24.4 0.1 25.5 0.1L28 0.1C29.1 0.1 30 1 30 2.1L30 23.6 52.4 23.6C53.5 23.6 54.4 24.5 54.4 25.6L54.4 28.1C54.4 29.2 53.5 30.1 52.4 30.1L30 30.1Z"/></g></g></g></svg></li></ul></header><ul class="boxes"><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li><li class="box"></li></ul>';
             //Make sure player 1 has class active in the beginning
             $("#player1").addClass("active");
             //Make sure player 2 doesnt have class active in the beginning
@@ -265,9 +343,9 @@ $scope.boardLoad = function() {
                         } 
                         //If player 1 has class active on hover show an O in the box, otherwise show an X.
                         if ($("#player1").hasClass("active")) {
-                        this.style.backgroundImage = "url('../tic-tac-toe-v3/img/o.svg')";
+                        this.style.backgroundImage = "url('../../images/o.svg')";
                         } else {
-                        this.style.backgroundImage = "url('../tic-tac-toe-v3/img/x.svg')";
+                        this.style.backgroundImage = "url('../../images/x.svg')";
                     }
                 }
             }
@@ -334,7 +412,7 @@ $scope.boardLoad = function() {
                             || o0 && o4 && o8
                             || o2 && o4 && o6) {
                         //Change mainboard to display player 1 winning
-                            Mainboard.innerHTML = '<div class="screen screen-win screen-win-one" id="finish"><header><h1>Tic Tac Toe</h1><p class="message">Winner!</p><a href="#" class="button" id="NewGameButton">New game</a></header></div>';
+                            mainHtml.innerHTML = '<div class="screen screen-win screen-win-one" id="finish"><header><h1>Tic Tac Toe</h1><p class="message">Winner!</p><button class="button" id="NewGameButton">New game</button></header></div>';
                                     Player1Wins = true;
                             GetNewGame = document.getElementById("NewGameButton");
                             GetNewGame.addEventListener("click", function(){
@@ -350,7 +428,7 @@ $scope.boardLoad = function() {
                             || x0 && x4 && x8
                             || x2 && x4 && x6) {
                         //Change mainboard to display player 2 winning
-                            Mainboard.innerHTML = '<div class="screen screen-win screen-win-two" id="finish"><header><h1>Tic Tac Toe</h1><p class="message">Winner!</p><a href="#" class="button" id="NewGameButton">New game</a></header></div>';
+                            mainHtml.innerHTML = '<div class="screen screen-win screen-win-two" id="finish"><header><h1>Tic Tac Toe</h1><p class="message">Winner!</p><button class="button" id="NewGameButton">New game</button></header></div>';
                                     Player2Wins = true;
                             GetNewGame = document.getElementById("NewGameButton");
                             GetNewGame.addEventListener("click", function(){
@@ -360,7 +438,7 @@ $scope.boardLoad = function() {
 
                         //If no player has won, and the total amount of boxes clicked is 9 the game is a tie!
                         if(!Player1Wins && !Player2Wins && BoxesCount === 9) {
-                            Mainboard.innerHTML = '<div class="screen screen-win screen-win-tie" id="finish"><header><h1>Tic Tac Toe</h1><p class="message">Dang, It\'s a Tie!</p><a href="#" class="button" id="NewGameButton">New game</a></header></div>';
+                            mainHtml.innerHTML = '<div class="screen screen-win screen-win-tie" id="finish"><header><h1>Tic Tac Toe</h1><p class="message">Dang, It\'s a Tie!</p><button class="button" id="NewGameButton">New game</button></header></div>';
                             GetNewGame = document.getElementById("NewGameButton");
                             GetNewGame.addEventListener("click", function(){
                             NewGame();
@@ -385,6 +463,225 @@ $scope.boardLoad = function() {
                     Boxes[i].addEventListener('click', BoxWinConditions());
             }
         }
+
+
+//*********************
+//****** Movie Search
+//*********************
+//*********************
+
+
+
+//start the moviestart function when 
+$scope.movieStart = function () {
+    mainHtml = document.getElementById('main-html');
+    // add - <label class="is-hidden" for="year">Any Year</label><input type="text" maxlength="4" name="year" id="year" placeholder="Year"> before the search button and set year parameters to filter by year.
+    mainHtml.innerHTML = '<div class="movie-search-doc"><div class="main-header"><div class="inner"><h1 class="main-title">MovieSearch</h1><form class="search-form"><label class="is-hidden" for="search">Search a title</label><input type="search" name="search" id="search" placeholder="Search a Title..."><button type="submit" id="submit" class="search-button"><i class="material-icons icn-search">search</i></button></form></div></div><div class="main-content clearfix"><ul id="movies" class="movie-list"></ul></div></div>';
+//stop the form from resetting the page
+$('form').submit(function(evt){
+        console.log("form submitted");
+        evt.preventDefault();
+
+var omdb = "http://www.omdbapi.com/?apikey=8ef2a0ef&"; //remove api key before deploying!
+var search = $("#search").val();
+//create omdb paramaters object
+var params = {
+    s: search,
+    r: "json",
+};
+
+//create a function for 0 returned movie results to display no movies were found that match the search variable.
+function errorMovies() {
+    var errorHTML = '';
+    errorHTML += '<li class="no-movies">';
+    errorHTML += '<i class="material-icons icon-help">';
+    errorHTML += 'help_outline' + '</i>';
+    errorHTML += 'No movies found that match:' + '' + search + '.';
+    errorHTML += '</li>';
+    $('#movies').html(errorHTML);
+    return;
+}
+
+//create a function to iterate over the array returned from our omdb api, create list items for each item returned.
+function displayMovies(data) {
+        var movieHTML = '';
+    $.each(data.Search, function(i, movie) {
+        movieHTML += '<li>';
+        movieHTML += '<div class="poster-wrap">';
+        //if the movie poster does not return "N/A" show the poster
+    if (movie.Poster != "N/A") {
+        movieHTML += '<img class="movie-poster" src="' + movie.Poster + '" >';
+        //otherwise show a placeholder icon
+    } else if (movie.Poster == "N/A") {
+        movieHTML += "<i class='material-icons poster-placeholder'>crop_original</i>";
+    }
+        movieHTML += '</div>';
+        movieHTML += '<span class="movie-title">';
+        movieHTML += movie.Title;
+        movieHTML += '</span>';
+        movieHTML += '<span class="movie-year">';
+        movieHTML += movie.Year;
+        movieHTML += '</span>';
+        movieHTML += '</li>';
+    });
+
+//if no data response, run errorMovies function
+if (data.Response == "False") {
+    errorMovies();
+} else {
+//add the movieHTML to the movies unordered list.
+$('#movies').html(movieHTML);
+}  //end if conditional for movie errors.
+
+} //end function displayMovies
+
+//create a getJSON request pass it the OMDB api, the params parameters and the displayMovies callback.
+$.getJSON(omdb, params, displayMovies);
+
+}); //end form submit
+
+} //end moviestart
+
+
+
+
+//*********************
+//******* Pagination
+
+
+function pagination() {
+//append search bar to the page
+$(".page-header").append('<div class="student-search"><input placeholder="Search for students..."><button>Search</button></div>');
+//add pagination to the page
+$(".page").append('<div class="pagination"><ul class="page-numbers"></ul></div>');
+
+//define global variables
+var $StudentsToHide;
+var $StudentsToShow;
+var inputValue = $('.student-search input').val().toLowerCase();
+
+    //set number of students to show on each page 
+    $StudentsToShow = $('.student-item h3').filter(function() {
+        if ($(this).text().indexOf(inputValue) >= 0) {
+            return true;
+        }
+    });
+
+    //show the first 10 students
+    $StudentsToShow.each(function(index) {
+        var $StudentParent = $(this).parents('.student-item');
+        if (index < 10) {
+            $StudentParent.show();
+        } else {
+            $StudentParent.hide();
+        }
+    });
+
+    //append li items to the bottom
+        for (var i = 0; i < Math.ceil($StudentsToShow.length / 10); i++) {
+            
+            var $anchortag;
+            var $li = $('<li></li>');
+            $(".page-numbers").append($li);
+
+            if (i === 0) {
+                $anchortag = $('<div class="active">' + (i+1) + '</div>');
+            } else {
+                $anchortag = $('<div>' + (i+1) + '</div>');
+            }
+            $li.append($anchortag);
+        }
+
+    $("button").click(function() {
+        //empty the list at the bottom to create a new one
+        $(".pagination ul").empty();
+        //store the value of the input search into a variable
+        inputValue = $("input").val().toLowerCase();
+        console.log(inputValue);
+        //filter the list items by the input value and add CSS
+        $StudentsToHide = $('.student-item h3').filter(function(index) {
+            if($(this).text().indexOf(inputValue) == -1) {
+             return true;
+         }
+         //Hide anything that does not match the list items shown
+         }).each(function() {
+            $(this).parent().parent().hide();
+
+         });
+         //show the correct students
+         $StudentsToShow = $('.student-item h3').filter(function(index) {
+            if($(this).text().indexOf(inputValue) >= 0) {
+                return true;
+            }
+         }).each(function(){
+            $(this).parent().parent().show();
+
+         });
+
+         $StudentsToShow.each(function(index) {
+        var $StudentParent = $(this).parents('.student-item');
+        if (index < 10) {
+            $StudentParent.show();
+        } else {
+            $StudentParent.hide();
+        }
+    });
+         //appends li items to the bottom
+         for (var i = 0; i < Math.ceil($StudentsToShow.length / 10); i++) {
+            
+            var $anchortag;
+            var $li = $('<li></li>');
+            $(".page-numbers").append($li);
+
+            if (i === 0) {
+                $anchortag = $('<div class="active">' + (i+1) + '</div>');
+            } else {
+                $anchortag = $('<div>' + (i+1) + '</div>');
+            }
+            $li.append($anchortag);
+        }
+        //calls NewPage function within the button click function
+        $('.page-numbers div').click(NewPage);
+         
+    });
+
+//Create an event handler for clicking a page number 
+$(".page-numbers div").click(NewPage);
+
+//Function for changing pages and changing the active class on the links
+function NewPage() {
+
+//remove active class from page links
+$('.page-numbers div').removeClass('active');
+
+//make the pressed page number have the active class
+$(this).addClass('active');
+
+//store the page number into a variable so we can use it for indexing
+var pageNumber = parseInt($(this).text());
+
+//Show only ten student's according to the page number and hide the others
+    $StudentsToShow.each(function(index) {
+        var $StudentParent = $(this).parents('.student-item');
+        if (index >= (pageNumber-1) * 10 && index < pageNumber * 10) {
+            $StudentParent.show();
+        } else {
+            $StudentParent.hide();
+            }
+    });
+
+}
+
+
+}
+
+//********* my recipes controller invoke **
+//*****************************************
+
+$scope.recipeClick = function () {
+    $location.path('/recipes');
+}
+
 
 
 });	//end controller
@@ -526,6 +823,287 @@ $scope.clearStyles = function() {
 
 
 });	//end controller
+})(); //end self invoked function
+(function(){
+'use strict'
+
+//initialize the angular module
+angular.module('app')
+.controller('RecipeDetailController',['$scope', 'dataService', '$location', '$routeParams', '$log', function($scope, dataService, $location, $routeParams, $log){
+
+
+
+//set the location on the scope.
+$scope.location = $location;
+
+//get all categories for the select category dropdown
+dataService.getCategories(function(response){
+	$scope.categories = response.data;
+	console.log(response.data);
+});
+
+//set the current path on the scope.
+	$scope.path = $location.path().split('/')[2];
+    console.log($scope.path);
+
+
+
+//get recipes
+	dataService.getRecipes(function(response){
+	$scope.recipes = response.data;
+
+
+});
+
+ 
+//see if there is a recipe in the path, if so request the ID and set the recipe on the scope to equal the response data
+if ($scope.path) {
+
+	console.log("yes there is a path");
+
+	dataService.getRecipesId($scope.path, function(response){
+	console.log("this is the get recipe id data:" + response.data);
+	$scope.recipe = response.data;
+
+}); //end dataService.getRecipesID
+
+} else {
+// otherwise create an empty recipe object on the scope to edit
+	$scope.recipe = {
+		name: "",
+		description: "",
+		category: "",
+		prepTime: 0,
+		cookTime: 0,
+		ingredients: [],
+		steps: []
+	} //end $scope.recipe
+
+	console.log("no path exists!");
+
+} //end else
+	
+
+//function to update recipe upon saving
+$scope.updateRecipe = function() {
+
+//if we are editing, use put to update the data.
+if($scope.path){
+
+	dataService.putID($scope.recipe._id, $scope.recipe, function(response){
+
+		$scope.recipe = response.data;
+		$location.url('/recipes');
+
+	}, function(error){
+		if (error) {$scope.showError = true}
+		$log.error(error.data.errors);
+		//add name errors to the scope to show specific errors related to the name field
+		$scope.nameErrors = error.data.errors.name;
+		//add ingredient errors to the scope to show specific errors related to adding ingredients.
+		$scope.ingredientErrors = error.data.errors.ingredients;
+		//add category errors to the scope to show specific errors related to category selection.
+		$scope.categoryErrors = error.data.errors.categories;
+		//add steps errors to the scope to show specific errors related to adding new steps.
+		$scope.stepErrors = error.data.errors.steps;
+
+
+	}); //end dataService.putID
+
+
+} else {
+   
+   //otherwise add new recipe
+   dataService.addRecipe($scope.recipe, function(response){
+        
+        //go back to the home page after adding the recipe 
+        $location.url('/recipes');
+
+}, function(error){
+		if (error) {$scope.showError = true}
+		$log.error(error.data.errors);
+		//add name errors to the scope to show specific errors related to the name field
+		$scope.nameErrors = error.data.errors.name;
+		//add ingredient errors to the scope to show specific errors related to adding ingredients.
+		$scope.ingredientErrors = error.data.errors.ingredients;
+		//add category errors to the scope to show specific errors related to category selection.
+		$scope.categoryErrors = error.data.errors.categories;
+		//add steps errors to the scope to show specific errors related to adding new steps.
+		$scope.stepErrors = error.data.errors.steps;
+
+   }); //end dataService.addRecipe
+
+} //end else
+
+	}; //end scope.updateRecipe
+
+
+
+//add a cancel function to the scope to cancel adding/editing a recipe
+$scope.cancel = function() {
+  		$location.url('/recipes');
+}
+
+//set foodItems on the scope
+dataService.getFoodItems(function(response){
+	console.log(response.data);
+	$scope.foodItems = response.data;
+
+});
+
+
+//function to delete recipe steps
+$scope.deleteRecipeStep = function($index) {
+	console.log("this many steps: " + $scope.recipe.steps);
+	$scope.recipe.steps.splice($index, 1);
+	
+}
+
+//function to add recipe steps 
+$scope.addRecipeStep = function() {
+
+
+//push new object into the recipe steps array, set key value pairs to a description with an empty string.
+	$scope.recipe.steps.push(
+
+		//push object with empty string as description in key value pair
+	{
+		"description": ""
+	}
+
+	); //end recipe.steps.push
+
+	console.log($scope.recipe.steps);
+
+} //end addRecipeStep
+
+//function to delete an ingredient
+$scope.deleteRecipeIngredient = function($index) {
+	$scope.recipe.ingredients.splice($index, 1);
+
+}
+
+//function to add a new ingredient
+$scope.addIngredient = function() {
+
+	//push an ingredients object into the scope ingredients.
+	$scope.recipe.ingredients.push(
+
+ 	{
+ 		"foodItem": "",
+ 		"condition": "",
+ 		"amount": ""
+ 	}
+
+
+		);
+
+} //end addIngredient
+
+
+}]); //end controller
+})(); //end self invoked function
+(function(){
+'use strict'
+//start the angular module and create a controller
+angular.module('app')
+.controller('recipesController', function($scope, dataService, $location){
+
+$scope.$location = $location;
+
+//get recipe data for page load
+dataService.getRecipes(function(response){
+	console.log(response.data);
+	$scope.recipes = response.data;
+	console.log($scope.recipes.length);
+
+	});//end getRecipes
+
+// get all the categories for listing purposes
+dataService.getCategories(function(response){
+	console.log("This is the categories array: " + response.data);
+	$scope.categories = response.data;
+
+	}); //end getCategories
+
+//create the currentCategory property on the scope
+$scope.currentCategory = null;
+
+//instantiate the showNoRecipes property 
+$scope.showNoRecipes = null;
+
+//create getRecipeCategory on the scope as a function
+$scope.getRecipeCategory = function() {
+
+//if the category is all categories set $scope.recipes to equal that data.
+		if ($scope.currentCategory === "All Categories") {
+
+	dataService.getRecipes(function(response){ 
+		$scope.recipes = response.data;
+
+
+
+	}); //end dataService.getRecipes
+		
+
+	} else {
+
+
+
+
+//bind $scope.currentCategory as a parameter, select ng-model will use this to update this parameter via data binding.
+dataService.getRecipesCategory($scope.currentCategory, function(response){
+
+	console.log(response.data);
+ 	$scope.recipes = response.data;
+ 	console.log("This is the category: " + $scope.currentCategory);
+
+//create function that checks if $scope.recipes has recipes, if it does hide the div
+//may have to place this inside the function above to access the scope.recipes information.
+	if ($scope.recipes.length <= 0) {
+		//console.log for testing purposes
+		console.log("Recipes has No Length")
+		$scope.showNoRecipes = true;
+	} else {
+		//console.log for testing purposes
+		console.log("Recipes length is: " + $scope.recipes.length)
+		$scope.showNoRecipes = false;
+	} //end else
+
+});
+
+} //end else
+
+	}; //end getRecipeCategory function
+
+
+//function to delete recipes
+
+$scope.deleteRecipe = function($index) {
+	dataService.deleteRecipe($scope.recipes[$index]._id, function(){
+		//call the getRecipes dataService and refresh the recipes on the scope.
+		dataService.getRecipes(function(response){
+			$scope.recipes = response.data;
+
+
+		}); //end dataService.getRecipes
+
+
+	}); //end dataService.deleteRecipe
+} //end scope.deleteRecipe
+
+//create a recipe object to add with the addrecipe dataService
+
+
+
+
+
+
+
+
+
+
+}); //end recipes controller
 })(); //end self invoked function
 (function(){
 'use strict'

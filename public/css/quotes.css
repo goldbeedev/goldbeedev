@@ -71,6 +71,7 @@
   position: relative;
   width: 12em;
   display: inline-block;
+  top: 30%;
   left: 50%;
   margin-left: -6em;
   border-radius: 4px;

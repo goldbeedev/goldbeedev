@@ -4391,22 +4391,23 @@ h2 {
   font-size: 64px;
   text-transform: uppercase;
 }
+
 .jumbotron {                              /* front page styling, maybe add an ID to be able to use jumbotron quick styling on other pages. */
-  font-family: 'Titillium Web';
-  padding: 200px 0px;
   text-align: center;
+/*  font-family: 'Titillium Web';
   background-color: white;
+  opacity: 0.7;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover;*/
 }
 
-.jumbotron h1 {
-  font-family: 'Lobster';
+h1.home-title {
+  font-family: 'Roboto';
   font-size: 5em;
   margin-bottom: 0;
-  color: white;
+  color: black;
 }
 
 .jumbotron h4 {
@@ -4429,8 +4430,16 @@ h2 {
   top-margin: -150px;
 }
 
-.pages {
-  background-color: white;
+.pages:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../../images/skyscraper.jpg') no-repeat;
+  background-size: cover;
+  opacity: 0.6;
+  z-index: -99;
 }
 
 #quote-box {
@@ -4442,9 +4451,10 @@ h2 {
 .title-area{
   position: relative;
   top: 200px;
+  text-align: center;
 }
 
-#main-container {
+#main-container:after {
   position: absolute;
   top: 0;
   left: 0;
@@ -4452,10 +4462,53 @@ h2 {
   height: 100%;
   background: url('../../images/skyscraper.jpg') no-repeat;
   background-size: cover;
+  z-index: -99;
+  opacity: 0.6;
 }
+
+
+.contact-icons {
+  position: absolute;
+  top: 15%;
+  left: 25%;
+}
+
+.contactlogo {
+  padding: 0 30%;
+}
+
+
+.about-paragraph {
+  font-size: 26px;
+  border: 2px black solid;
+}
+
+.about-column {
+  background-color: rgba(0,0,0,0.5);
+  margin: 0 5%;
+}
+
+.about-pic {
+  max-width: 50%;
+}
+
+.about-section {
+  position: absolute;
+  top: 20%;
+}
+
+.about-text img {
+  display: inline-block;
+  border-radius: 100px;
+}
+
 
 #main-container h4 a {
   color: inherit;
+}
+
+#main-html {
+  margin-top: 100px;
 }
 
 h1 img {
@@ -4468,13 +4521,13 @@ h1 img {
 
 button.link {
      background:none!important;
-     border: 2px solid white; 
+     border: 2px solid black; 
      padding: 5px;
-     font: inherit;
+     font-family: 'Roboto';
      /*border is optional*/
 /*     border-bottom:1px solid #444;*/ 
      cursor: pointer;
-     color: white;
+     color: black;
 }
 
 
@@ -4590,430 +4643,435 @@ a.accordion-toggle:hover {
   max-height: 300px
 }
 
+@media only screen
+and (min-width : 0px)
+and (max-width : 480px) {
 
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-
-/**
- * 1. Set default font family to sans-serif.
- * 2. Prevent iOS and IE text size adjust after device orientation change,
- *    without disabling user zoom.
- */
-
-html {
-  font-family: sans-serif; /* 1 */
-  -ms-text-size-adjust: 100%; /* 2 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+.pages {
+  max-height: 1000px;
+  float: none;
+  width: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-/**
- * Remove default margin.
- */
+.pages::-webkit-scrollbar {
+    width: 6px;
+    background-color: rgba(0,0,0,0.5);
+} 
 
-body {
+.portfolio-thumb {
+  max-width: 325px;
+}
+
+}
+/* ================================= 
+  Element Styles
+==================================== */
+
+/** {
+  box-sizing: border-box;
+}*/
+
+.movie-search-doc {
+  font: 1em/1.5 'Roboto', sans-serif;
+  color: #222;
+  background: #f6f7f7;
+  padding-top: 145px;
+  padding-bottom: 3em;
   margin: 0;
 }
 
-/* HTML5 display definitions
-   ========================================================================== */
+a {
+  text-decoration: none;
+}
 
-/**
- * Correct `block` display not defined for any HTML5 element in IE 8/9.
- * Correct `block` display not defined for `details` or `summary` in IE 10/11
- * and Firefox.
- * Correct `block` display not defined for `main` in IE 11.
- */
+/*ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}*/
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-menu,
-nav,
-section,
-summary {
+input {
+  font-size: 1.12em;
+  height: 46px;
+  padding-bottom: 1em;
+  padding-left: 0;
+  background: none;
+  border: none;
+  outline: 0;
+  border-bottom: 4px solid #e4e4e4;
+  transition: border-color .4s;
+}
+
+input ~ input {
+  margin-left: 5px;
+}
+
+input:focus {
+  border-color: #c1c1c1;
+}
+
+.search-button {
+  width: 40px;
+  height: 35px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  outline: 0;
+  position: relative;
+  z-index: 2000;
+}
+
+/* ================================= 
+  Page Components
+==================================== */
+
+.main-title {
+  font-size: 1.4em;
+  line-height: 80px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.search-form input:last-of-type {
+  margin-right: -40px;
+}
+.search-form input:nth-of-type(1) {
+  width: 65%;
+}
+.search-form input:nth-of-type(2) {
+  width: 35%;
+}
+.search-form input:only-of-type {
+  width: 100%;
+  padding-right: 35px;
+}
+
+.search-button {
+  float: right;
+  margin-right: -10px;
+}
+
+.icn-search {
+  font-weight: 700;
+}
+
+.icon-help {
+  font-size: 6em;
+  margin-bottom: 12px;
+  color: #dfdfdf;
   display: block;
 }
 
-/**
- * 1. Correct `inline-block` display not defined in IE 8/9.
- * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
- */
+/* MOVIE LIST COMPONENTS -------- */
 
-audio,
-canvas,
-progress,
-video {
-  display: inline-block; /* 1 */
-  vertical-align: baseline; /* 2 */
+.no-movies  {
+  color: #b0b0b0;
+  height: 140px;
+  margin-top: 65px;
+  text-align: center;
+  font-size: 1.25em;
 }
 
-/**
- * Prevent modern browsers from displaying `audio` without controls.
- * Remove excess height in iOS 5 devices.
- */
-
-audio:not([controls]) {
-  display: none;
-  height: 0;
+.movie-list li {
+  margin: 1.925em 0 0;
 }
 
-/**
- * Address `[hidden]` styling not present in IE 8/9/10.
- * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
- */
-
-[hidden],
-template {
-  display: none;
+.movie-list a {
+  display: block;
+  margin: auto;
 }
 
-/* Links
-   ========================================================================== */
-
-/**
- * Remove the gray background color from active links in IE 10.
- */
-
-a {
-  background-color: transparent;
-}
-
-/**
- * Improve readability of focused elements when they are also in an
- * active/hover state.
- */
-
-a:active,
-a:hover {
-  outline: 0;
-}
-
-/* Text-level semantics
-   ========================================================================== */
-
-/**
- * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
- */
-
-abbr[title] {
-  border-bottom: 1px dotted;
-}
-
-/**
- * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
- */
-
-b,
-strong {
-  font-weight: bold;
-}
-
-/**
- * Address styling not present in Safari and Chrome.
- */
-
-dfn {
-  font-style: italic;
-}
-
-/**
- * Address variable `h1` font-size and margin within `section` and `article`
- * contexts in Firefox 4+, Safari, and Chrome.
- */
-
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-/**
- * Address styling not present in IE 8/9.
- */
-
-mark {
-  background: #ff0;
+.movie-title {
+  display: block;
+  font-size: 1.1em;
+  line-height: 1.2;
   color: #000;
+  font-weight: 500;
 }
 
-/**
- * Address inconsistent and variable font size in all browsers.
- */
-
-small {
-  font-size: 80%;
+.movie-year {
+  color: #9d9d9d;
 }
 
-/**
- * Prevent `sub` and `sup` affecting `line-height` in all browsers.
- */
-
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
+.poster-wrap {
+  background-color: #fff;
+  margin-bottom: .8em;
   position: relative;
-  vertical-align: baseline;
 }
 
-sup {
-  top: -0.5em;
+.poster-placeholder {
+  color: #dadada;
+  font-size: 5em;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
 }
 
-sub {
-  bottom: -0.25em;
+/* ================================= 
+  Layout Styles
+==================================== */
+
+.inner,
+.main-content {
+  width: 90%;
+  max-width: 1025px;
+  margin: auto;
 }
 
-/* Embedded content
-   ========================================================================== */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  min-height: 80px;
+  z-index: 98;
+}
 
-/**
- * Remove border when inside `a` element in IE 8/9/10.
- */
+/* ================================= 
+  Helper Classes
+==================================== */
 
-img {
+.clearfix::after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+.is-hidden {
   border: 0;
-}
-
-/**
- * Correct overflow not hidden in IE 9/10/11.
- */
-
-svg:not(:root) {
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
   overflow: hidden;
-}
-
-/* Grouping content
-   ========================================================================== */
-
-/**
- * Address margin not present in IE 8/9 and Safari.
- */
-
-figure {
-  margin: 1em 40px;
-}
-
-/**
- * Address differences between Firefox and other browsers.
- */
-
-hr {
-  box-sizing: content-box;
-  height: 0;
-}
-
-/**
- * Contain overflow in all browsers.
- */
-
-pre {
-  overflow: auto;
-}
-
-/**
- * Address odd `em`-unit font size rendering in all browsers.
- */
-
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-/* Forms
-   ========================================================================== */
-
-/**
- * Known limitation: by default, Chrome and Safari on OS X allow very limited
- * styling of `select`, unless a `border` property is set.
- */
-
-/**
- * 1. Correct color not being inherited.
- *    Known issue: affects color of disabled elements.
- * 2. Correct font properties not being inherited.
- * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
- */
-
-button,
-input,
-optgroup,
-select,
-textarea {
-  color: inherit; /* 1 */
-  font: inherit; /* 2 */
-  margin: 0; /* 3 */
-}
-
-/**
- * Address `overflow` set to `hidden` in IE 8/9/10/11.
- */
-
-button {
-  overflow: visible;
-}
-
-/**
- * Address inconsistent `text-transform` inheritance for `button` and `select`.
- * All other form control elements do not inherit `text-transform` values.
- * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
- * Correct `select` style inheritance in Firefox.
- */
-
-button,
-select {
-  text-transform: none;
-}
-
-/**
- * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
- *    and `video` controls.
- * 2. Correct inability to style clickable `input` types in iOS.
- * 3. Improve usability and consistency of cursor style between image-type
- *    `input` and others.
- */
-
-button,
-html input[type="button"], /* 1 */
-input[type="reset"],
-input[type="submit"] {
-  -webkit-appearance: button; /* 2 */
-  cursor: pointer; /* 3 */
-}
-
-/**
- * Re-set default cursor for disabled elements.
- */
-
-button[disabled],
-html input[disabled] {
-  cursor: default;
-}
-
-/**
- * Remove inner padding and border in Firefox 4+.
- */
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  border: 0;
   padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
-/**
- * Address Firefox 4+ setting `line-height` on `input` using `!important` in
- * the UA stylesheet.
- */
+/* ================================= 
+  Media Queries
+==================================== */
 
-input {
-  line-height: normal;
+@media (min-width: 0) and (max-width: 549px) {
+  .movie-list li {
+    text-align: center;
+  }
+  .main-title {
+    float: right;
+  }
 }
 
-/**
- * It's recommended that you don't attempt to style these elements.
- * Firefox's implementation doesn't respect box-sizing, padding, or width.
- *
- * 1. Address box sizing set to `content-box` in IE 8/9/10.
- * 2. Remove excess padding in IE 8/9/10.
- */
+@media (min-width: 550px) {
+  .main-title {
+    float: right;
+  }
+  
+  .movie-list li {
+    float: left;
+    width: 50%;
+  }
 
-input[type="checkbox"],
-input[type="radio"] {
-  box-sizing: border-box; /* 1 */
-  padding: 0; /* 2 */
+  .movie-list .no-movies {
+    float: none;
+    width: 100%;
+  }
+
+  .poster-wrap {
+    height: 290px;
+    border: 1px solid white;
+    overflow: hidden;
+  }
+
+  .movie-poster {
+    width: 100%;
+    min-height: 100%;
+    -webkit-transition: -webkit-transform .4s ease-out;
+    transition: transform .4s ease-out;
+  }
+
+  .poster-wrap:hover .movie-poster {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+ .movie-title {
+    padding-right: 1.25em;
+ }
+
 }
 
-/**
- * Fix the cursor style for Chrome's increment/decrement buttons. For certain
- * `font-size` values of the `input`, it causes the cursor style of the
- * decrement button to change from `default` to `text`.
- */
+@media (min-width: 769px) {
+/*  body {
+    padding-top: 115px;
+  }*/
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  height: auto;
+  .main-title {
+    float: left;
+  }
+
+  .search-form {
+    width: 422px;
+    float: right;
+    margin-top: 34px;
+  }
+
+  .movie-list li {
+    width: 33.333333333%;
+  }
 }
 
-/**
- * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
- * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
- */
-
-input[type="search"] {
-  -webkit-appearance: textfield; /* 1 */
-  box-sizing: content-box; /* 2 */
+@media (min-width: 769px) and (max-width: 999px) { 
+  .movie-list li:nth-of-type(3n+1) {
+    clear: left;
+  }
 }
 
-/**
- * Remove inner padding and search cancel button in Safari and Chrome on OS X.
- * Safari (but not Chrome) clips the cancel button when the search input has
- * padding (and `textfield` appearance).
- */
+@media (min-width: 1000px) {
+  .movie-list li {
+    width: 25%;
+  }
 
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
+  .movie-list li:nth-of-type(4n+1) {
+    clear: left;
+  }
+}
+.page-br{
+  background-color: #e1f1f6;
+  font-family: Helvetica, sans-serif;
+  color: #222;
 }
 
-/**
- * Define consistent border, margin, and padding.
- */
-
-fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em;
+.page{
+  margin: 50px auto;
+  width: 70%;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 50px;
 }
 
-/**
- * 1. Correct `color` not being inherited in IE 8/9/10/11.
- * 2. Remove padding so people aren't caught out if they zero out fieldsets.
- */
-
-legend {
-  border: 0; /* 1 */
-  padding: 0; /* 2 */
+.page-header{
+  margin-bottom: 20px;
 }
+  .page-header h2{
+    float: left;
+    font-size: 22px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #555;
+  }
 
-/**
- * Remove default vertical scrollbar in IE 8/9/10/11.
- */
+  .page-header .student-search{
+    float: right;
+  }
 
-textarea {
-  overflow: auto;
+    .page-header .student-search input{
+      border-radius: 5px;
+      border: 1px solid #eaeaea;
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+
+    .page-header .student-search button{
+      border-radius: 5px;
+      border: 1px solid #eaeaea;
+      padding: 8px 15px;
+      font-size: 14px;
+      background-color: #4ba6c3;
+      color: #fff
+    }
+
+.student-list{}
+
+  .student-item{
+    margin: 0 0 20px 0;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+    .student-details{
+      width: 50%;
+      float: left;
+    }
+
+      .student-details .avatar{
+        width: 40px;
+        height: auto;
+        border-radius: 20px;
+        float: left;
+        margin-right: 14px
+      }
+
+      .student-details h3{
+        margin: 4px 0 2px 0;
+        font-weight: bold;
+        color: #4ba6c3;
+      }
+
+      .student-details .email{
+        color: #888;
+        font-size: 14px;
+      }
+
+
+    .joined-details{
+      width: 50%;
+      float: left;
+      text-align: right;
+    }
+
+      .joined-details .date{
+        margin-top: 15px;
+        display: block;
+        font-size: 14px;
+        color: #999;
+      }
+
+  .student-item:last-child{
+    margin: 0;
+    padding: 0;
+    border-bottom: none;
+  }
+
+.pagination{
+  margin: 40px 0 0 0;
+  text-align: center;
 }
+ 
+  .pagination li {
+    display: inline;
+  }
 
-/**
- * Don't inherit the `font-weight` (applied by a rule above).
- * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
- */
+    .pagination li div{
+      cursor: pointer;
+      border: 1px solid #eaeaea;
+      border-radius: 5px;
+      padding: 3px 8px;
+      text-decoration: none;
+      color: #4ba6c3;
+      display: inline;
+    }
 
-optgroup {
-  font-weight: bold;
-}
+    .pagination li div.active,
+    .pagination li div:hover{
+      background-color: #4ba6c3;
+      color: #fff;
+    }
 
-/* Tables
-   ========================================================================== */
-
-/**
- * Remove most spacing between table cells.
- */
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-td,
-th {
-  padding: 0;
+.cf:after { 
+   content: "."; 
+   visibility: hidden; 
+   display: block; 
+   height: 0; 
+   clear: both;
 }
 /* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript */
 /**
@@ -5228,6 +5286,7 @@ pre[class*="language-"] {
   position: relative;
   width: 12em;
   display: inline-block;
+  top: 30%;
   left: 50%;
   margin-left: -6em;
   border-radius: 4px;
@@ -5256,6 +5315,252 @@ pre[class*="language-"] {
   }
 }
 
+
+.recipe-body {
+  max-width: 800px;
+  background: #f6ebe5;
+  color: #808080;
+  font-family: 'Varela Round', Helvetica, Arial, sans-serif;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 16px;
+  padding-bottom: 80px; }
+
+a.recipe-link {
+  color: #808080;
+  text-decoration: none; }
+  a:hover {
+    color: #676767; }
+
+h1 {
+  font-size: 26px;
+  margin-top: 30px; }
+
+h2 {
+  font-size: 20px;
+  margin-top: 25px; }
+
+.controls button {
+  margin: 20px 0; }
+.controls select {
+  margin-top: 20px; }
+
+button, select, input, textarea {
+  font-family: 'Varela Round', Helvetica, Arial, sans-serif;
+  font-size: 14px; }
+
+select:focus, input:focus, textarea:focus {
+  border: 2px solid #808080; }
+
+.label-spacing {
+  margin-top: 26px; }
+
+input, textarea {
+  width: 89%;
+  background-color: white;
+  color: #808080;
+  text-align: center;
+  border-radius: 4px;
+  border: 2px solid #bfbab4;
+  outline: 0;
+  text-align: left;
+  padding: 10px; }
+
+select {
+  background-color: white;
+  color: #808080;
+  text-align: center;
+  border-radius: 3px;
+  border: 2px solid #bfbab4;
+  outline: 0;
+  height: 41px;
+  width: 100%; }
+
+button.recipe-buttons {
+  border: 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  background: #808080;
+  cursor: pointer; }
+  button.secondary {
+    background: #bfbab4; }
+    button.secondary:hover {
+      background: #a8a198; }
+  button.recipe-buttons:hover {
+    background: #676767;
+    transition: background ease-in-out 0.3s; }
+
+.recipes {
+  margin: 20px auto 0;
+  text-align: left; }
+  .recipes .row {
+    background: white;
+    border-top: 1px solid #f6ebe5;
+    border-bottom: 1px solid #f6ebe5; }
+    .recipes .row:first-child {
+      border-radius: 8px 8px 0 0; }
+    .recipes .row:last-child {
+      border-radius: 0 0 8px 8px; }
+
+.add-row {
+  margin-bottom: 30px; }
+
+.addHover .hoverBlock {
+  opacity: 0;
+  transition: all ease-in-out 0.3s; }
+  .addHover .hoverBlock a:first-child {
+    margin-right: 12px; }
+.addHover:hover .hoverBlock {
+  opacity: 1; }
+
+.flush-right {
+  float: right; }
+
+.no-action-link:hover {
+  cursor: pointer; }
+
+.pad-top {
+  padding-top: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-link-logo {
+    left: 20px;
+}
+
+.nav-link-logo img {
+    z-index: -99;
+    max-width: 1200px;
+}
+
+.nav-link {
+    color: white;
+    display: inline-block;
+    float: right;
+    padding: 0 10px;
+    bottom-margin: 20px;
+    font-family: 'Mate SC', cursive;
+    z-index: 1;
+}
+
+.nav-link:hover {
+    cursor: pointer;
+    color: gray;
+    opacity: .6;
+}
+
+/* =======================
+    General body content
+    ==================== */
+
+.company-name {
+    position: absolute;
+    top: 200px;
+    left: 200px;
+}
+
+.company-name-text {
+    font-size: 38px;
+    font-family: 'Condiment', cursive;
+    color: gray;
+}
+
+/* =========================
+    video background stuff
+    ======================== 
+    */
+
+.video-background {
+    background: #000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -99;
+}
+
+.video-foreground,
+.video-background iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+
+/* =================================
+    media queries
+    =============================== */
+
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground { height: 300%; top: -100%; }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground { width: 300%; left: -100%; }
+}
+
+@media only screen
+and (min-width : 0px)
+and (max-width : 480px) {
+    .video-foreground { 
+        display: none; 
+}
+
+    .nav-link {
+        display: block;
+        width: 100%;
+    }
+
+    .company-name {
+        display: block;
+        width: 100%;
+        position: relative;
+        left: 20px;
+        margin-bottom: 20px;
+    }
+
+    .nav-link-logo img {
+        max-width: 500px;
+        display: block;
+    }
+
+    .contact-form {
+        left: 20px;
+    }
+
+    .about-p {
+        display: block;
+        width: 100%;
+
+    }
+
+    .about-text {
+        position: absolute;
+        top: 100px;
+        width: 200px;
+    }
+
+    .social-logo {
+        box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.6);
+    }
+
+
+}
 @charset "UTF-8";
 body {
   background: #fff;
@@ -5391,9 +5696,1419 @@ h1.tic-tac-title {
       margin-right: 0; }
     .boxes .box-filled-1 {
       background-color: #FFA000;
-      background-image: url(../images/o.svg); }
+      background-image: url(../../images/o.svg); }
     .boxes .box-filled-2 {
       background-color: #3688C3;
-      background-image: url(../images/x.svg); }
+      background-image: url(../../images/x.svg); }
 
 
+
+/* ============================================ */
+/* This file has a mobile-to-desktop breakpoint */
+/* ============================================ */
+@media (max-width: 400px) {
+  @-ms-viewport {
+    width: 320px;
+  }
+}
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.grid-container:before, .grid-5:before, .mobile-grid-5:before, .grid-10:before, .mobile-grid-10:before, .grid-15:before, .mobile-grid-15:before, .grid-20:before, .mobile-grid-20:before, .grid-25:before, .mobile-grid-25:before, .grid-30:before, .mobile-grid-30:before, .grid-35:before, .mobile-grid-35:before, .grid-40:before, .mobile-grid-40:before, .grid-45:before, .mobile-grid-45:before, .grid-50:before, .mobile-grid-50:before, .grid-55:before, .mobile-grid-55:before, .grid-60:before, .mobile-grid-60:before, .grid-65:before, .mobile-grid-65:before, .grid-70:before, .mobile-grid-70:before, .grid-75:before, .mobile-grid-75:before, .grid-80:before, .mobile-grid-80:before, .grid-85:before, .mobile-grid-85:before, .grid-90:before, .mobile-grid-90:before, .grid-95:before, .mobile-grid-95:before, .grid-100:before, .mobile-grid-100:before, .grid-33:before, .mobile-grid-33:before, .grid-66:before, .mobile-grid-66:before, .grid-offset:before, .clearfix:before,
+.grid-container:after,
+.grid-5:after,
+.mobile-grid-5:after,
+.grid-10:after,
+.mobile-grid-10:after,
+.grid-15:after,
+.mobile-grid-15:after,
+.grid-20:after,
+.mobile-grid-20:after,
+.grid-25:after,
+.mobile-grid-25:after,
+.grid-30:after,
+.mobile-grid-30:after,
+.grid-35:after,
+.mobile-grid-35:after,
+.grid-40:after,
+.mobile-grid-40:after,
+.grid-45:after,
+.mobile-grid-45:after,
+.grid-50:after,
+.mobile-grid-50:after,
+.grid-55:after,
+.mobile-grid-55:after,
+.grid-60:after,
+.mobile-grid-60:after,
+.grid-65:after,
+.mobile-grid-65:after,
+.grid-70:after,
+.mobile-grid-70:after,
+.grid-75:after,
+.mobile-grid-75:after,
+.grid-80:after,
+.mobile-grid-80:after,
+.grid-85:after,
+.mobile-grid-85:after,
+.grid-90:after,
+.mobile-grid-90:after,
+.grid-95:after,
+.mobile-grid-95:after,
+.grid-100:after,
+.mobile-grid-100:after,
+.grid-33:after,
+.mobile-grid-33:after,
+.grid-66:after,
+.mobile-grid-66:after,
+.grid-offset:after,
+.clearfix:after {
+  content: ".";
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  font-size: 0;
+  line-height: 0;
+  width: 0;
+  height: 0;
+}
+
+.grid-container:after, .grid-5:after, .mobile-grid-5:after, .grid-10:after, .mobile-grid-10:after, .grid-15:after, .mobile-grid-15:after, .grid-20:after, .mobile-grid-20:after, .grid-25:after, .mobile-grid-25:after, .grid-30:after, .mobile-grid-30:after, .grid-35:after, .mobile-grid-35:after, .grid-40:after, .mobile-grid-40:after, .grid-45:after, .mobile-grid-45:after, .grid-50:after, .mobile-grid-50:after, .grid-55:after, .mobile-grid-55:after, .grid-60:after, .mobile-grid-60:after, .grid-65:after, .mobile-grid-65:after, .grid-70:after, .mobile-grid-70:after, .grid-75:after, .mobile-grid-75:after, .grid-80:after, .mobile-grid-80:after, .grid-85:after, .mobile-grid-85:after, .grid-90:after, .mobile-grid-90:after, .grid-95:after, .mobile-grid-95:after, .grid-100:after, .mobile-grid-100:after, .grid-33:after, .mobile-grid-33:after, .grid-66:after, .mobile-grid-66:after, .grid-offset:after, .clearfix:after {
+  clear: both;
+}
+
+.grid-container, .grid-5, .mobile-grid-5, .grid-10, .mobile-grid-10, .grid-15, .mobile-grid-15, .grid-20, .mobile-grid-20, .grid-25, .mobile-grid-25, .grid-30, .mobile-grid-30, .grid-35, .mobile-grid-35, .grid-40, .mobile-grid-40, .grid-45, .mobile-grid-45, .grid-50, .mobile-grid-50, .grid-55, .mobile-grid-55, .grid-60, .mobile-grid-60, .grid-65, .mobile-grid-65, .grid-70, .mobile-grid-70, .grid-75, .mobile-grid-75, .grid-80, .mobile-grid-80, .grid-85, .mobile-grid-85, .grid-90, .mobile-grid-90, .grid-95, .mobile-grid-95, .grid-100, .mobile-grid-100, .grid-33, .mobile-grid-33, .grid-66, .mobile-grid-66, .grid-offset, .clearfix {
+  /* <IE7> */
+  *zoom: 1;
+  /* </IE7> */
+}
+
+.grid-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.grid-5, .mobile-grid-5, .grid-10, .mobile-grid-10, .grid-15, .mobile-grid-15, .grid-20, .mobile-grid-20, .grid-25, .mobile-grid-25, .grid-30, .mobile-grid-30, .grid-35, .mobile-grid-35, .grid-40, .mobile-grid-40, .grid-45, .mobile-grid-45, .grid-50, .mobile-grid-50, .grid-55, .mobile-grid-55, .grid-60, .mobile-grid-60, .grid-65, .mobile-grid-65, .grid-70, .mobile-grid-70, .grid-75, .mobile-grid-75, .grid-80, .mobile-grid-80, .grid-85, .mobile-grid-85, .grid-90, .mobile-grid-90, .grid-95, .mobile-grid-95, .grid-100, .mobile-grid-100, .grid-33, .mobile-grid-33, .grid-66, .mobile-grid-66 {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
+  /* <IE7> */
+  *padding-left: 0;
+  *padding-right: 0;
+  /* </IE7> */
+}
+.grid-5 > *, .mobile-grid-5 > *, .grid-10 > *, .mobile-grid-10 > *, .grid-15 > *, .mobile-grid-15 > *, .grid-20 > *, .mobile-grid-20 > *, .grid-25 > *, .mobile-grid-25 > *, .grid-30 > *, .mobile-grid-30 > *, .grid-35 > *, .mobile-grid-35 > *, .grid-40 > *, .mobile-grid-40 > *, .grid-45 > *, .mobile-grid-45 > *, .grid-50 > *, .mobile-grid-50 > *, .grid-55 > *, .mobile-grid-55 > *, .grid-60 > *, .mobile-grid-60 > *, .grid-65 > *, .mobile-grid-65 > *, .grid-70 > *, .mobile-grid-70 > *, .grid-75 > *, .mobile-grid-75 > *, .grid-80 > *, .mobile-grid-80 > *, .grid-85 > *, .mobile-grid-85 > *, .grid-90 > *, .mobile-grid-90 > *, .grid-95 > *, .mobile-grid-95 > *, .grid-100 > *, .mobile-grid-100 > *, .grid-33 > *, .mobile-grid-33 > *, .grid-66 > *, .mobile-grid-66 > * {
+  /* <IE7> */
+  *margin-left: expression((!this.className.match(/grid-[1-9]/) && this.currentStyle.display === 'block' && this.currentStyle.width === 'auto') && '10px');
+  *margin-right: expression((!this.className.match(/grid-[1-9]/) && this.currentStyle.display === 'block' && this.currentStyle.width === 'auto') && '10px');
+  /* </IE7> */
+}
+
+.grid-parent {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.grid-offset {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+@media (max-width: 767px) {
+  .mobile-push-5, .mobile-pull-5, .mobile-push-10, .mobile-pull-10, .mobile-push-15, .mobile-pull-15, .mobile-push-20, .mobile-pull-20, .mobile-push-25, .mobile-pull-25, .mobile-push-30, .mobile-pull-30, .mobile-push-35, .mobile-pull-35, .mobile-push-40, .mobile-pull-40, .mobile-push-45, .mobile-pull-45, .mobile-push-50, .mobile-pull-50, .mobile-push-55, .mobile-pull-55, .mobile-push-60, .mobile-pull-60, .mobile-push-65, .mobile-pull-65, .mobile-push-70, .mobile-pull-70, .mobile-push-75, .mobile-pull-75, .mobile-push-80, .mobile-pull-80, .mobile-push-85, .mobile-pull-85, .mobile-push-90, .mobile-pull-90, .mobile-push-95, .mobile-pull-95, .mobile-push-33, .mobile-pull-33, .mobile-push-66, .mobile-pull-66 {
+    position: relative;
+  }
+
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .mobile-grid-5 {
+    float: left;
+    width: 5%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.05 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-5 {
+    margin-left: 5%;
+  }
+
+  .mobile-suffix-5 {
+    margin-right: 5%;
+  }
+
+  .mobile-push-5 {
+    left: 5%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.05 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-5 {
+    left: -5%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.05 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-10 {
+    float: left;
+    width: 10%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.1 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-10 {
+    margin-left: 10%;
+  }
+
+  .mobile-suffix-10 {
+    margin-right: 10%;
+  }
+
+  .mobile-push-10 {
+    left: 10%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.1 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-10 {
+    left: -10%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.1 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-15 {
+    float: left;
+    width: 15%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.15 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-15 {
+    margin-left: 15%;
+  }
+
+  .mobile-suffix-15 {
+    margin-right: 15%;
+  }
+
+  .mobile-push-15 {
+    left: 15%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.15 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-15 {
+    left: -15%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.15 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-20 {
+    float: left;
+    width: 20%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.2 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-20 {
+    margin-left: 20%;
+  }
+
+  .mobile-suffix-20 {
+    margin-right: 20%;
+  }
+
+  .mobile-push-20 {
+    left: 20%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.2 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-20 {
+    left: -20%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.2 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-25 {
+    float: left;
+    width: 25%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.25 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-25 {
+    margin-left: 25%;
+  }
+
+  .mobile-suffix-25 {
+    margin-right: 25%;
+  }
+
+  .mobile-push-25 {
+    left: 25%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.25 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-25 {
+    left: -25%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.25 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-30 {
+    float: left;
+    width: 30%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.3 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-30 {
+    margin-left: 30%;
+  }
+
+  .mobile-suffix-30 {
+    margin-right: 30%;
+  }
+
+  .mobile-push-30 {
+    left: 30%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.3 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-30 {
+    left: -30%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.3 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-35 {
+    float: left;
+    width: 35%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.35 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-35 {
+    margin-left: 35%;
+  }
+
+  .mobile-suffix-35 {
+    margin-right: 35%;
+  }
+
+  .mobile-push-35 {
+    left: 35%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.35 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-35 {
+    left: -35%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.35 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-40 {
+    float: left;
+    width: 40%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.4 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-40 {
+    margin-left: 40%;
+  }
+
+  .mobile-suffix-40 {
+    margin-right: 40%;
+  }
+
+  .mobile-push-40 {
+    left: 40%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.4 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-40 {
+    left: -40%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.4 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-45 {
+    float: left;
+    width: 45%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.45 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-45 {
+    margin-left: 45%;
+  }
+
+  .mobile-suffix-45 {
+    margin-right: 45%;
+  }
+
+  .mobile-push-45 {
+    left: 45%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.45 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-45 {
+    left: -45%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.45 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-50 {
+    float: left;
+    width: 50%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.5 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-50 {
+    margin-left: 50%;
+  }
+
+  .mobile-suffix-50 {
+    margin-right: 50%;
+  }
+
+  .mobile-push-50 {
+    left: 50%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.5 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-50 {
+    left: -50%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.5 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-55 {
+    float: left;
+    width: 55%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.55 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-55 {
+    margin-left: 55%;
+  }
+
+  .mobile-suffix-55 {
+    margin-right: 55%;
+  }
+
+  .mobile-push-55 {
+    left: 55%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.55 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-55 {
+    left: -55%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.55 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-60 {
+    float: left;
+    width: 60%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.6 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-60 {
+    margin-left: 60%;
+  }
+
+  .mobile-suffix-60 {
+    margin-right: 60%;
+  }
+
+  .mobile-push-60 {
+    left: 60%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.6 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-60 {
+    left: -60%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.6 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-65 {
+    float: left;
+    width: 65%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.65 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-65 {
+    margin-left: 65%;
+  }
+
+  .mobile-suffix-65 {
+    margin-right: 65%;
+  }
+
+  .mobile-push-65 {
+    left: 65%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.65 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-65 {
+    left: -65%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.65 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-70 {
+    float: left;
+    width: 70%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.7 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-70 {
+    margin-left: 70%;
+  }
+
+  .mobile-suffix-70 {
+    margin-right: 70%;
+  }
+
+  .mobile-push-70 {
+    left: 70%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.7 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-70 {
+    left: -70%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.7 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-75 {
+    float: left;
+    width: 75%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.75 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-75 {
+    margin-left: 75%;
+  }
+
+  .mobile-suffix-75 {
+    margin-right: 75%;
+  }
+
+  .mobile-push-75 {
+    left: 75%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.75 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-75 {
+    left: -75%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.75 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-80 {
+    float: left;
+    width: 80%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.8 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-80 {
+    margin-left: 80%;
+  }
+
+  .mobile-suffix-80 {
+    margin-right: 80%;
+  }
+
+  .mobile-push-80 {
+    left: 80%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.8 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-80 {
+    left: -80%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.8 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-85 {
+    float: left;
+    width: 85%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.85 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-85 {
+    margin-left: 85%;
+  }
+
+  .mobile-suffix-85 {
+    margin-right: 85%;
+  }
+
+  .mobile-push-85 {
+    left: 85%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.85 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-85 {
+    left: -85%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.85 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-90 {
+    float: left;
+    width: 90%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.9 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-90 {
+    margin-left: 90%;
+  }
+
+  .mobile-suffix-90 {
+    margin-right: 90%;
+  }
+
+  .mobile-push-90 {
+    left: 90%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.9 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-90 {
+    left: -90%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.9 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-95 {
+    float: left;
+    width: 95%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.95 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-95 {
+    margin-left: 95%;
+  }
+
+  .mobile-suffix-95 {
+    margin-right: 95%;
+  }
+
+  .mobile-push-95 {
+    left: 95%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.95 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-95 {
+    left: -95%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.95 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-33 {
+    float: left;
+    width: 33.33333%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.33333 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-33 {
+    margin-left: 33.33333%;
+  }
+
+  .mobile-suffix-33 {
+    margin-right: 33.33333%;
+  }
+
+  .mobile-push-33 {
+    left: 33.33333%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.33333 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-33 {
+    left: -33.33333%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.33333 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-66 {
+    float: left;
+    width: 66.66667%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.66667 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-prefix-66 {
+    margin-left: 66.66667%;
+  }
+
+  .mobile-suffix-66 {
+    margin-right: 66.66667%;
+  }
+
+  .mobile-push-66 {
+    left: 66.66667%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.66667 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-pull-66 {
+    left: -66.66667%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.66667 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .mobile-grid-100 {
+    clear: both;
+    width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .push-5, .pull-5, .push-10, .pull-10, .push-15, .pull-15, .push-20, .pull-20, .push-25, .pull-25, .push-30, .pull-30, .push-35, .pull-35, .push-40, .pull-40, .push-45, .pull-45, .push-50, .pull-50, .push-55, .pull-55, .push-60, .pull-60, .push-65, .pull-65, .push-70, .pull-70, .push-75, .pull-75, .push-80, .pull-80, .push-85, .pull-85, .push-90, .pull-90, .push-95, .pull-95, .push-33, .pull-33, .push-66, .pull-66 {
+    position: relative;
+  }
+
+  .hide-on-desktop {
+    display: none !important;
+  }
+
+  .grid-5 {
+    float: left;
+    width: 5%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.05 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-5 {
+    margin-left: 5%;
+  }
+
+  .suffix-5 {
+    margin-right: 5%;
+  }
+
+  .push-5 {
+    left: 5%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.05 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-5 {
+    left: -5%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.05 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-10 {
+    float: left;
+    width: 10%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.1 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-10 {
+    margin-left: 10%;
+  }
+
+  .suffix-10 {
+    margin-right: 10%;
+  }
+
+  .push-10 {
+    left: 10%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.1 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-10 {
+    left: -10%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.1 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-15 {
+    float: left;
+    width: 15%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.15 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-15 {
+    margin-left: 15%;
+  }
+
+  .suffix-15 {
+    margin-right: 15%;
+  }
+
+  .push-15 {
+    left: 15%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.15 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-15 {
+    left: -15%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.15 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-20 {
+    float: left;
+    width: 20%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.2 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-20 {
+    margin-left: 20%;
+  }
+
+  .suffix-20 {
+    margin-right: 20%;
+  }
+
+  .push-20 {
+    left: 20%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.2 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-20 {
+    left: -20%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.2 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-25 {
+    float: left;
+    width: 25%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.25 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-25 {
+    margin-left: 25%;
+  }
+
+  .suffix-25 {
+    margin-right: 25%;
+  }
+
+  .push-25 {
+    left: 25%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.25 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-25 {
+    left: -25%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.25 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-30 {
+    float: left;
+    width: 30%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.3 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-30 {
+    margin-left: 30%;
+  }
+
+  .suffix-30 {
+    margin-right: 30%;
+  }
+
+  .push-30 {
+    left: 30%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.3 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-30 {
+    left: -30%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.3 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-35 {
+    float: left;
+    width: 35%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.35 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-35 {
+    margin-left: 35%;
+  }
+
+  .suffix-35 {
+    margin-right: 35%;
+  }
+
+  .push-35 {
+    left: 35%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.35 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-35 {
+    left: -35%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.35 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-40 {
+    float: left;
+    width: 40%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.4 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-40 {
+    margin-left: 40%;
+  }
+
+  .suffix-40 {
+    margin-right: 40%;
+  }
+
+  .push-40 {
+    left: 40%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.4 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-40 {
+    left: -40%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.4 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-45 {
+    float: left;
+    width: 45%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.45 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-45 {
+    margin-left: 45%;
+  }
+
+  .suffix-45 {
+    margin-right: 45%;
+  }
+
+  .push-45 {
+    left: 45%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.45 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-45 {
+    left: -45%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.45 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-50 {
+    float: left;
+    width: 50%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.5 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-50 {
+    margin-left: 50%;
+  }
+
+  .suffix-50 {
+    margin-right: 50%;
+  }
+
+  .push-50 {
+    left: 50%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.5 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-50 {
+    left: -50%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.5 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-55 {
+    float: left;
+    width: 55%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.55 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-55 {
+    margin-left: 55%;
+  }
+
+  .suffix-55 {
+    margin-right: 55%;
+  }
+
+  .push-55 {
+    left: 55%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.55 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-55 {
+    left: -55%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.55 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-60 {
+    float: left;
+    width: 60%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.6 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-60 {
+    margin-left: 60%;
+  }
+
+  .suffix-60 {
+    margin-right: 60%;
+  }
+
+  .push-60 {
+    left: 60%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.6 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-60 {
+    left: -60%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.6 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-65 {
+    float: left;
+    width: 65%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.65 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-65 {
+    margin-left: 65%;
+  }
+
+  .suffix-65 {
+    margin-right: 65%;
+  }
+
+  .push-65 {
+    left: 65%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.65 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-65 {
+    left: -65%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.65 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-70 {
+    float: left;
+    width: 70%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.7 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-70 {
+    margin-left: 70%;
+  }
+
+  .suffix-70 {
+    margin-right: 70%;
+  }
+
+  .push-70 {
+    left: 70%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.7 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-70 {
+    left: -70%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.7 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-75 {
+    float: left;
+    width: 75%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.75 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-75 {
+    margin-left: 75%;
+  }
+
+  .suffix-75 {
+    margin-right: 75%;
+  }
+
+  .push-75 {
+    left: 75%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.75 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-75 {
+    left: -75%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.75 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-80 {
+    float: left;
+    width: 80%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.8 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-80 {
+    margin-left: 80%;
+  }
+
+  .suffix-80 {
+    margin-right: 80%;
+  }
+
+  .push-80 {
+    left: 80%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.8 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-80 {
+    left: -80%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.8 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-85 {
+    float: left;
+    width: 85%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.85 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-85 {
+    margin-left: 85%;
+  }
+
+  .suffix-85 {
+    margin-right: 85%;
+  }
+
+  .push-85 {
+    left: 85%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.85 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-85 {
+    left: -85%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.85 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-90 {
+    float: left;
+    width: 90%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.9 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-90 {
+    margin-left: 90%;
+  }
+
+  .suffix-90 {
+    margin-right: 90%;
+  }
+
+  .push-90 {
+    left: 90%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.9 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-90 {
+    left: -90%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.9 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-95 {
+    float: left;
+    width: 95%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.95 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-95 {
+    margin-left: 95%;
+  }
+
+  .suffix-95 {
+    margin-right: 95%;
+  }
+
+  .push-95 {
+    left: 95%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.95 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-95 {
+    left: -95%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.95 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-33 {
+    float: left;
+    width: 33.33333%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.33333 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-33 {
+    margin-left: 33.33333%;
+  }
+
+  .suffix-33 {
+    margin-right: 33.33333%;
+  }
+
+  .push-33 {
+    left: 33.33333%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.33333 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-33 {
+    left: -33.33333%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.33333 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-66 {
+    float: left;
+    width: 66.66667%;
+    /* <IE7> */
+    *width: expression(Math.floor(0.66667 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .prefix-66 {
+    margin-left: 66.66667%;
+  }
+
+  .suffix-66 {
+    margin-right: 66.66667%;
+  }
+
+  .push-66 {
+    left: 66.66667%;
+    /* <IE7> */
+    *left: expression(Math.floor(0.66667 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .pull-66 {
+    left: -66.66667%;
+    /* <IE7> */
+    *left: expression(Math.floor(-0.66667 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + 'px');
+    /* </IE7> */
+  }
+
+  .grid-100 {
+    clear: both;
+    width: 100%;
+  }
+}

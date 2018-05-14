@@ -9,9 +9,9 @@ angular.module('app')
 $scope.$location = $location;
 
 //add a function to skills that changes the path to the skills template once triggered
-$scope.skills = function() {
+$scope.about = function() {
 
-	$location.path('/skills');
+	$location.path('/about');
 } 
 //add a function to contact that changes the path to the contact template once triggered
 $scope.contact = function() {

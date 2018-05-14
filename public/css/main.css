@@ -41,22 +41,23 @@ h2 {
   font-size: 64px;
   text-transform: uppercase;
 }
+
 .jumbotron {                              /* front page styling, maybe add an ID to be able to use jumbotron quick styling on other pages. */
-  font-family: 'Titillium Web';
-  padding: 200px 0px;
   text-align: center;
+/*  font-family: 'Titillium Web';
   background-color: white;
+  opacity: 0.7;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover;*/
 }
 
-.jumbotron h1 {
-  font-family: 'Lobster';
+h1.home-title {
+  font-family: 'Roboto';
   font-size: 5em;
   margin-bottom: 0;
-  color: white;
+  color: black;
 }
 
 .jumbotron h4 {
@@ -79,8 +80,16 @@ h2 {
   top-margin: -150px;
 }
 
-.pages {
-  background-color: white;
+.pages:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../../images/skyscraper.jpg') no-repeat;
+  background-size: cover;
+  opacity: 0.6;
+  z-index: -99;
 }
 
 #quote-box {
@@ -92,9 +101,10 @@ h2 {
 .title-area{
   position: relative;
   top: 200px;
+  text-align: center;
 }
 
-#main-container {
+#main-container:after {
   position: absolute;
   top: 0;
   left: 0;
@@ -102,10 +112,53 @@ h2 {
   height: 100%;
   background: url('../../images/skyscraper.jpg') no-repeat;
   background-size: cover;
+  z-index: -99;
+  opacity: 0.6;
 }
+
+
+.contact-icons {
+  position: absolute;
+  top: 15%;
+  left: 25%;
+}
+
+.contactlogo {
+  padding: 0 30%;
+}
+
+
+.about-paragraph {
+  font-size: 26px;
+  border: 2px black solid;
+}
+
+.about-column {
+  background-color: rgba(0,0,0,0.5);
+  margin: 0 5%;
+}
+
+.about-pic {
+  max-width: 50%;
+}
+
+.about-section {
+  position: absolute;
+  top: 20%;
+}
+
+.about-text img {
+  display: inline-block;
+  border-radius: 100px;
+}
+
 
 #main-container h4 a {
   color: inherit;
+}
+
+#main-html {
+  margin-top: 100px;
 }
 
 h1 img {
@@ -118,13 +171,13 @@ h1 img {
 
 button.link {
      background:none!important;
-     border: 2px solid white; 
+     border: 2px solid black; 
      padding: 5px;
-     font: inherit;
+     font-family: 'Roboto';
      /*border is optional*/
 /*     border-bottom:1px solid #444;*/ 
      cursor: pointer;
-     color: white;
+     color: black;
 }
 
 
@@ -240,3 +293,25 @@ a.accordion-toggle:hover {
   max-height: 300px
 }
 
+@media only screen
+and (min-width : 0px)
+and (max-width : 480px) {
+
+.pages {
+  max-height: 1000px;
+  float: none;
+  width: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.pages::-webkit-scrollbar {
+    width: 6px;
+    background-color: rgba(0,0,0,0.5);
+} 
+
+.portfolio-thumb {
+  max-width: 325px;
+}
+
+}

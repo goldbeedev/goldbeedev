@@ -2,7 +2,23 @@
 //load modules
 var express = require('express'),
   bodyParser = require('body-parser'),
-  path = require('path');
+  path = require('path'),
+  Datastore = require('nedb');
+
+//setup database for recipes app
+var db = {};
+db.categories = new Datastore({
+  filename: './src/api/data/categories.db',
+  autoload: true
+});
+db.recipes = new Datastore({
+  filename: './src/api/data/recipes.db',
+  autoload: true
+});
+db.foodItems = new Datastore({
+  filename: './src/api/data/foodItems.db',
+  autoload: true
+});
 
 
 var app = express();
@@ -22,6 +38,23 @@ app.get('/vendor/angular-route.js', function(req, res) {
 app.get('/vendor/angular-animate.js', function(req,res){
   res.sendFile(path.join(__dirname, '../node_modules', 'angular-animate', 'angular-animate.js'));
 });
+
+
+// recipes
+var recipeRouter = require('./api/routes/recipeRoutes.js')(db.recipes, db.foodItems);
+app.use('/api/recipes', recipeRouter);
+
+// categories
+var categoryRouter = require('./api/routes/categoryRoutes.js')(db.categories);
+app.use('/api/categories', categoryRouter);
+
+// food items
+var foodItemRouter = require('./api/routes/foodItemRoutes.js')(db.foodItems);
+app.use('/api/fooditems', foodItemRouter);
+
+
+
+
 
 app.listen(port);
 console.log('Magic happens on port ' + port);

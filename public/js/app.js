@@ -17,8 +17,8 @@ function config($routeProvider, $locationProvider) {
 		controller: 'mainController'
 	})
 	//skills page route
-	.when('/skills', {
-		templateUrl: 'templates/skills.html',
+	.when('/about', {
+		templateUrl: 'templates/about.html',
 		controller: 'skillsController'
 	})
 	//quotes page route
@@ -35,6 +35,20 @@ function config($routeProvider, $locationProvider) {
 		templateUrl: 'templates/portfolio.html',
 		controller: 'portfolioController' //change this eventually, just using contactController as a default
 	})
+	.when('/recipes', {
+		templateUrl: 'templates/recipes.html',
+		controller: 'recipesController'
+	})
+	.when('/edit/:id', {
+        controller: 'RecipeDetailController',
+        controllerAs: 'vm',
+        templateUrl: 'templates/recipe-detail.html'
+    })
+    .when('/add', {
+        controller: 'RecipeDetailController',
+        controllerAs: 'vm',
+        templateUrl: 'templates/recipe-detail.html'
+    })
 	//when all else fails direct to the home page
 	.otherwise({
 		redirectTo: '/'
