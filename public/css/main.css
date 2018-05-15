@@ -69,6 +69,7 @@ h1.home-title {
   font-size: 5em;
   margin-bottom: 0;
   color: black;
+  visibility: hidden;
 }
 
 .jumbotron h4 {
@@ -216,7 +217,8 @@ h1 img {
   height: 60px;
 }
 
-button.link {
+button.home-link {
+     visibility: hidden;
      background:none!important;
      border: 2px solid black; 
      padding: 5px;

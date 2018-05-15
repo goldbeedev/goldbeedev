@@ -23,6 +23,7 @@
   background-size: cover;
 }
 .quote {
+  color: black;
   font-size: 4rem;
   font-weight: 400;
   line-height: 1.1;
@@ -52,6 +53,7 @@
   line-height: 1.1;
   text-align: right;
   margin-right: 4em;
+  color: black;
 }
 .source:before {
   content: "—";
