@@ -4351,6 +4351,17 @@
 /** {
   border: 1px solid red;
 }*/
+body {
+  background-color: transparent !important;
+}
+
+html { 
+  background: url('../../images/pagesbackground.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 .navbar-brand {              /* Page Title */
 font-family: 'Lobster';
@@ -4452,17 +4463,20 @@ h1.home-title {
   text-align: center;
 }
 
-#main-container:after {
+/*#main-container:before {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('../../images/bluefuzzbg.jpg') no-repeat;
+  background: url('../../images/bluefuzzbg.jpg');
   background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   z-index: -99;
   opacity: 0.6;
 }
+*/
 
 
 .contact-icons {
@@ -4499,6 +4513,9 @@ h1.home-title {
 }
 
 .project-text {
+  text-align: center;
+  font-family: 'Mate SC';
+  font-size: 2em;
   font-style: bold;
   color: white;
   text-shadow: black 0.1em 0.1em 0.2em;
@@ -4516,6 +4533,7 @@ h1.home-title {
 }
 
 .about-pic {
+  margin-left: 25%;
   max-width: 50%;
 }
 
@@ -4567,43 +4585,6 @@ button.link {
   position: fixed;
   cursor: pointer;
   z-index: 99;
-}
-
-.rating {
-  width: 25px;
-  height: 25px;
-
-}
-
-.ratingnofade {
-  width: 25px;
-  height: 25px;
-  opacity: 0.25;
-}
-
-.ratingfade {
-  width: 25px;
-  height: 25px;
-  opacity: 0.8;
-  -webkit-transition: all linear 1s;
-  transition: all linear 1s;
-}  
-
-.ratingfade.ng-hide {
-  opacity: 0.15;
-}  
-
-
-.paragraphfade.ng-hide {
-  opacity: 0;
-}
-
-.paragraphfade {
-  opacity: 1;
-  -webkit-transition: all linear 2s;
-  transition: all linear 2s;
-  -webkit-transition-delay: 1s;
-  transition-delay: 1s;
 }
 
 .grayscale {
@@ -4669,20 +4650,23 @@ a.accordion-toggle:hover {
   transition: all 0.25s;
 }
 
-.language-javascript {
-  max-height: 300px
-}
-
 @media only screen
 and (min-width : 0px)
 and (max-width : 480px) {
+
+h1.home-title {
+  font-size: 4em;
+}
 
 .about-section {
   top: 5%;
 }
 
-.about-pic {
+.about-column {
   text-align: center;
+}
+
+.about-pic {
   width: 50%;
 }
 
@@ -4715,7 +4699,6 @@ and (max-width : 480px) {
 .movie-search-doc {
   font: 1em/1.5 'Roboto', sans-serif;
   color: #222;
-  background: #f6f7f7;
   padding-top: 145px;
   padding-bottom: 3em;
   margin: 0;
@@ -4767,11 +4750,12 @@ input:focus {
 ==================================== */
 
 .main-title {
-  font-size: 1.4em;
+  font-size: 2.5em;
   line-height: 80px;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0;
+  text-shadow: white 0.1em 0.1em 0.2em;
 }
 
 .search-form input:last-of-type {
@@ -4870,7 +4854,6 @@ input:focus {
   top: 0;
   left: 0;
   width: 100%;
-  background: #fff;
   min-height: 80px;
   z-index: 98;
 }
@@ -5282,6 +5265,7 @@ pre[class*="language-"] {
   line-height: 1.1;
   position: relative;
   margin: auto;
+  text-shadow: white 0.1em 0.1em 0.2em;
   } 
 .quote:before, .quote:after {
   font-size: 6rem;
@@ -5322,10 +5306,10 @@ pre[class*="language-"] {
 }
 
 #loadQuote {
-  position: relative;
+  position: absolute;
   width: 12em;
   display: inline-block;
-  top: 30%;
+  top: 40%;
   left: 50%;
   margin-left: -6em;
   border-radius: 4px;
@@ -5602,9 +5586,9 @@ and (max-width : 480px) {
 
 }
 @charset "UTF-8";
-body {
+/*body {
   background: #fff;
-  font-family: "Montserrat", sans-serif; }
+  font-family: "Montserrat", sans-serif; }*/
 
 ul {
   margin: 0;

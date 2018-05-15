@@ -28,6 +28,7 @@
   line-height: 1.1;
   position: relative;
   margin: auto;
+  text-shadow: white 0.1em 0.1em 0.2em;
   } 
 .quote:before, .quote:after {
   font-size: 6rem;
@@ -68,10 +69,10 @@
 }
 
 #loadQuote {
-  position: relative;
+  position: absolute;
   width: 12em;
   display: inline-block;
-  top: 30%;
+  top: 40%;
   left: 50%;
   margin-left: -6em;
   border-radius: 4px;

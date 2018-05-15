@@ -1,6 +1,17 @@
 /** {
   border: 1px solid red;
 }*/
+body {
+  background-color: transparent !important;
+}
+
+html { 
+  background: url('../../images/pagesbackground.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 .navbar-brand {              /* Page Title */
 font-family: 'Lobster';
@@ -102,17 +113,20 @@ h1.home-title {
   text-align: center;
 }
 
-#main-container:after {
+/*#main-container:before {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('../../images/bluefuzzbg.jpg') no-repeat;
+  background: url('../../images/bluefuzzbg.jpg');
   background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   z-index: -99;
   opacity: 0.6;
 }
+*/
 
 
 .contact-icons {
@@ -149,6 +163,9 @@ h1.home-title {
 }
 
 .project-text {
+  text-align: center;
+  font-family: 'Mate SC';
+  font-size: 2em;
   font-style: bold;
   color: white;
   text-shadow: black 0.1em 0.1em 0.2em;
@@ -166,6 +183,7 @@ h1.home-title {
 }
 
 .about-pic {
+  margin-left: 25%;
   max-width: 50%;
 }
 
@@ -286,12 +304,19 @@ a.accordion-toggle:hover {
 and (min-width : 0px)
 and (max-width : 480px) {
 
+h1.home-title {
+  font-size: 4em;
+}
+
 .about-section {
   top: 5%;
 }
 
-.about-pic {
+.about-column {
   text-align: center;
+}
+
+.about-pic {
   width: 50%;
 }
 

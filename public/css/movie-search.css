@@ -9,7 +9,6 @@
 .movie-search-doc {
   font: 1em/1.5 'Roboto', sans-serif;
   color: #222;
-  background: #f6f7f7;
   padding-top: 145px;
   padding-bottom: 3em;
   margin: 0;
@@ -61,11 +60,12 @@ input:focus {
 ==================================== */
 
 .main-title {
-  font-size: 1.4em;
+  font-size: 2.5em;
   line-height: 80px;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0;
+  text-shadow: white 0.1em 0.1em 0.2em;
 }
 
 .search-form input:last-of-type {
@@ -164,7 +164,6 @@ input:focus {
   top: 0;
   left: 0;
   width: 100%;
-  background: #fff;
   min-height: 80px;
   z-index: 98;
 }
