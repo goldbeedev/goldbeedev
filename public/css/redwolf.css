@@ -98,6 +98,7 @@ and (max-width : 480px) {
     .nav-link {
         display: block;
         width: 100%;
+        text-align: right;
     }
 
     .company-name {
